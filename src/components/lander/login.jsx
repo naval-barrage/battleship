@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './login.scss'
 import {Link} from 'react-router-dom'
 
-class Login extends Component {
+export default class Login extends Component {
     constructor() {
         super()
         this.state = {
@@ -78,51 +78,36 @@ class Login extends Component {
         <div className='landing-box'>
             {!this.state.register
             ? (
-                
                 <div>
-                <div className='titles'>Login in here</div>
                     <div className='login'>
                 <div className='input-titles'>Username</div>
-                <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Username'/>
-                </span>
                 <div className='input-titles'>Your Password</div>
-                <span className='input'>
                 <input onChange={(e) => this.handleChange(e, 'password')} type="password" placeholder='Password'/>
-                </span>
                 <div>
                     <div className="log">
                         <button className='regbutton'  onClick={() => this.toggleChange()}>Register</button>
                         <Link to='home'><button className='enter'>Login</button></Link>
                         {/* <button className='enter' onClick={() => this.login()}>Login</button> */}
                     </div>
-                </div>
+                    </div>
                     </div>
             </div>
             ) : (
-                <div className='titles'>
-                <div>Create an account</div>
-                <div className="login">
+                <div className='register-box'>
                     <div className='input-titles'>Create a Username</div>
-                <span className='input'>
                     <input onChange={(e) => this.handleChange(e, 'email')} type="text" placeholder='Username'/>
-                </span>
                     <div className='input-titles'>Set a password</div>
                     <div>
-                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'password')} type="password" placeholder='Password'/>
-                        </span>
                     </div>
-                        <span className='input'>
                         <input onChange={(e) => this.handleChange(e, 'password2')} type="password" placeholder='Repeat Password'/>
-                        </span>
                 <div>
                     <div className="log">
                         <button className='regbutton' onClick={() => this.toggleChange()}>Back to Login</button>
                         <Link to='home'><button className='enter'>Register</button></Link>
                         {/* <button className='enter' onClick={() => this.register()}>Register</button> */}
                     </div>
-                </div>
                 </div>
             </div>
             )}
@@ -131,4 +116,3 @@ class Login extends Component {
         )
     }
 }
-export default Login
