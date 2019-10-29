@@ -1,0 +1,16 @@
+.HowTo {
+    background-image: url('../assets//howto.jpg');
+    height: 110vh;
+    width: 100%;
+    background-size: cover;
+}
+.container-howto {
+    display: flex;
+    justify-content: space-evenly;
+}
+.box-howto {
+    max-width: 400px;
+    background: rgba(128, 128, 128, 0.767);
+    margin: 20px;
+    padding: 10px;
+}
