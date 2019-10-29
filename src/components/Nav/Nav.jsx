@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import './nav.scss'
 import {Link} from 'react-router-dom'
+import { connect } from "react-redux";
+import { updateUser } from "../../redux/reducer";
 
-export default class Nav extends Component {
+class Nav extends Component {
     constructor() {
         super()
         this.state = {
@@ -20,3 +22,13 @@ export default class Nav extends Component {
         )
     }
 }
+
+function mapStateToProps(state){
+    const {user} = state;
+    return {user}
+}
+
+export default connect(
+  mapStateToProps,
+  { updateUser }
+)(Nav);
