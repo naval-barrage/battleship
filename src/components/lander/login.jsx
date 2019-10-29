@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import './login.scss'
 import {Link} from 'react-router-dom'
+import { connect } from "react-redux";
+import { updateUser } from "../../redux/reducer";
 
-export default class Login extends Component {
+class Login extends Component {
     constructor() {
         super()
         this.state = {
@@ -116,3 +118,12 @@ export default class Login extends Component {
         )
     }
 }
+function mapStateToProps(state){
+    const {user} = state;
+    return {user}
+}
+
+export default connect(
+  null,
+  { updateUser }
+)(Login);
