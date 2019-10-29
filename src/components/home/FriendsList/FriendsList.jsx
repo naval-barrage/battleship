@@ -11,7 +11,7 @@ export default class FriendsList extends Component {
     render() {
         return(
             <div className='FriendsList'>
-
+                Freinds
         </div>
         )
     }

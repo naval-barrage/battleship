@@ -11,7 +11,7 @@ export default class Ships extends Component {
     render() {
         return(
             <div className='Ships'>
-
+                ships
         </div>
         )
     }
