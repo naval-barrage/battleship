@@ -11,7 +11,7 @@ export default class HoWTo extends Component {
     render() {
         return(
             <div className='HowTo'>
-
+                howTo
         </div>
         )
     }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './yourGrid.scss'
+import './yourgird.scss'
 
 export default class YourGrid extends Component {
     constructor() {
@@ -11,7 +11,7 @@ export default class YourGrid extends Component {
     render() {
         return(
             <div className='YourGrid'>
-
+                yourGrid
         </div>
         )
     }
