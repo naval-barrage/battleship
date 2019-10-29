@@ -12,10 +12,10 @@ export default class Nav extends Component {
     render() {
         return(
         <div className='Nav'>
-            <Link to='/'><button className='enter'>Logout</button></Link>
             <Link to='/home'><button className='enter'>Home</button></Link>
             <Link to='/gameroom'><button className='enter'>Gameroom</button></Link>
             <Link to='/howto'><button className='enter'>How to play</button></Link>
+            <Link to='/'><button className='enter'>Logout</button></Link>
         </div>
         )
     }
