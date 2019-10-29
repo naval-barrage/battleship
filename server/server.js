@@ -5,6 +5,7 @@ const session = require('express-session')
 const chalk = require('chalk')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const authCtrl = require('./controllers/authController')
+const socialCtrl = require('./controllers/socialController')
 
 const app = express()
 
@@ -16,12 +17,18 @@ app.use(session({
 }))
 
 // AUTH ENDPOINTS
+
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
 app.get('/auth/user', authCtrl.getUser)
 
 // SOCIAL ENDPOINTS
+
+app.post('/api/friends/:new_friend_id', socialCtrl.newFriends)
+app.get('/api/friends', socialCtrl.getFriends)
+app.get('/api/users', socialCtrl.getUsers)
+app.get('/api/games', socialCtrl.getActiveGames)
 
 // GAME ENDPOINTS
 

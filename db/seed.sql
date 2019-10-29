@@ -32,7 +32,6 @@ CREATE TABLE friendship (
     games_played INT,
     friend1_wins INT,
     friend2_wins INT,
-    game_active BOOLEAN
 );
 
 INSERT INTO friendship (friend1, friend2, games_played, friend1_wins, friend2_wins, game_active)
@@ -236,5 +235,8 @@ ADD COLUMN pos3 VARCHAR(10);
 ALTER TABLE destroyer
 ADD COLUMN pos1 VARCHAR(10),
 ADD COLUMN pos2 VARCHAR(10);
+
+ALTER TABLE friendship
+ADD COLUMN game_active INT REFERENCES gameroom(gameroom_id);
 
 
