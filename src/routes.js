@@ -1,6 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import Lander from './components/Lander/Login'
+import Lander from './components/Lander/login'
 import HowTo from './components/HowTo/HowTo'
 import Home from './components/Home/Home'
 import Gameroom from './components/Gameroom/Gameroom'

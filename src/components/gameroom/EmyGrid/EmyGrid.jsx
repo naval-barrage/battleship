@@ -11,7 +11,7 @@ export default class EmyGrid extends Component {
     render() {
         return(
             <div className='EmyGrid'>
-
+                Emy Grid
         </div>
         )
     }
