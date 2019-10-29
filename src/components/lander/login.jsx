@@ -124,6 +124,6 @@ function mapStateToProps(state){
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   { updateUser }
 )(Login);

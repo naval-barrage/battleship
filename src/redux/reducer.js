@@ -19,4 +19,5 @@ const reducer = (state = initialState, action)=>{
             return{...state, user: action.payload}
         default: return state
     }
-}
+} 
+export default reducer
