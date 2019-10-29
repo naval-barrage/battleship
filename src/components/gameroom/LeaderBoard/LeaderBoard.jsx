@@ -11,8 +11,8 @@ export default class LeaderBoard extends Component {
     render() {
         return(
             <div className='LeaderBoard'>
-
-        </div>
+                LeaderBoard
+        </div>  
         )
     }
 }

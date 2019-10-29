@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import './howTo.scss'
-import Nav from '../Nav/Nav'
 
 export default class HoWTo extends Component {
     constructor() {
@@ -12,7 +11,7 @@ export default class HoWTo extends Component {
     render() {
         return(
             <div className='HowTo'>
-                <Nav/>
+                howTo
         </div>
         )
     }

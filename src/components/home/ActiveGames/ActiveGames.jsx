@@ -11,7 +11,7 @@ export default class ActiveGames extends Component {
     render() {
         return(
             <div className='ActiveGames'>
-
+                    ActiveGames
         </div>
         )
     }
