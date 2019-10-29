@@ -1,7 +1,22 @@
+@import './variables.scss';
+@import './components/HowTo/howTo.scss';
+@import './components/Nav/nav.scss';
+@import './components/gameroom/gameroom.scss';
+@import './components/gameroom/EmyGrid/emyGrid.scss';
+@import './components/gameroom/LeaderBoard/leaderBoard.scss';
+@import './components/gameroom/Ships/ships.scss';
+@import './components/gameroom/YourGrid/yourgird.scss';
+@import './components/home/ActiveGames/activeGames.scss';
+@import './components/home/FriendsList/friendsList.scss';
+@import './components/home/Search/search.scss';
+@import './components/home/home.scss';
+@import './components/lander/login.scss';
+
 .App {
   text-align: center;
 }
 
 * {
   margin: 0;
+  box-sizing: border-box;
 }
