@@ -3,8 +3,8 @@ import './home.scss'
 import Active from './ActiveGames/ActiveGames'
 import Friends from './FriendsList/FriendsList'
 import Search from './Search/Search'
-import HowTo from '../HowTo/HowTo'
 import Nav from '../Nav/Nav'
+import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
     constructor() {
@@ -21,7 +21,7 @@ export default class Home extends Component {
                 <Friends/>
                 <Search/>
                 <Active/>
-                <HowTo/>
+                <Link to='/howto'><button>how to play</button></Link>
         </div>
     </div>
         )
