@@ -5,14 +5,15 @@ export default class YourGrid extends Component {
     constructor() {
         super()
         this.state = {
-
+        
         }
     }
     render() {
-        return(
-            <div className='YourGrid'>
-                yourGrid
+    return (
+        <div>
+            YourGrid
         </div>
-        )
+        );
     }
 }
+
