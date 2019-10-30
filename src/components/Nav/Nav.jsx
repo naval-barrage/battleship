@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { updateUser } from "../../redux/reducer";
 import axios from 'axios'
 import swal from 'sweetalert2'
+import {withRouter} from 'react-router-dom'
 
 class Nav extends Component {
     constructor() {
@@ -15,9 +16,20 @@ class Nav extends Component {
     }
     logout = async () => {
         const res = await axios.delete('/auth/logout')
+        let user = {user: null, loggedIn: false}
+        this.props.updateUser(user)
+        // alert(res.data.message)
+        swal.fire({
+            text: res.data.message.text,
+            type: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        })
         this.props.history.push('/')
-        swal.fire({type: 'success', text: res.data.message, showConfirmButton: false, timer: 800})
+        // console.log(this.props.history);
+        
     }
+    
 
     render() {
         return(
@@ -32,11 +44,11 @@ class Nav extends Component {
 }
 
 function mapStateToProps(state){
-    const {user} = state;
-    return {user}
+    const {user, loggedIn} = state;
+    return {user, loggedIn}
 }
 
 export default connect(
   mapStateToProps,
-  { updateUser }
-)(Nav);
+  { updateUser },
+)(withRouter(Nav));
