@@ -90,7 +90,7 @@ class Login extends Component {
       const res = await axios.post("/auth/login", { username, password });
       swal.fire({
         type: "error",
-        text: "Wrong password or wrong email",
+        text: "Wrong password or wrong Username",
         showConfirmButton: false,
         timer: 1500
       });
