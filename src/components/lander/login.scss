@@ -4,4 +4,21 @@
     height: 100vh;
     width: 100%;
     background: linear-gradient(50deg, gray, rgb(58, 55, 55));
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.login-box{
+    color: whitesmoke;
+    height: 49vh;
+    width: 25vw;
+    border: 10px solid black;
+    display: flex;
+    justify-content: center;
+    margin: auto auto;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    border-radius:5%;
+    margin-top:20vh
 }

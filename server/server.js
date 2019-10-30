@@ -42,7 +42,7 @@ app.post('/api/games/new/:guest_id', gameCtrl.createNewGame)
 
 mongoose.connect(MONGO_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true}).then(dbInstance => {
     app.set('mdb', dbInstance)
-    console.log('mongo db connected')
+    console.log(chalk.blue('mongo db connected'))
 })
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

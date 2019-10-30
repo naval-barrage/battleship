@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
-import './yourgird.scss'
+import './yourGrid.scss'
 
 export default class YourGrid extends Component {
     constructor() {
         super()
         this.state = {
+            
             // 0 = empty
             // 1 = submarine(3)
             // 2 = destroyer(2)
@@ -14,7 +15,7 @@ export default class YourGrid extends Component {
             // 6 = miss
             // 7 = hit
             
-            yourGrid = [
+            yourGrid : [
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -31,7 +32,7 @@ export default class YourGrid extends Component {
     render() {
     return (
         <div>
-            YourGrid
+            {this.state.yourGrid}
         </div>
         );
     }

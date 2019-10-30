@@ -83,41 +83,57 @@ class Login extends Component {
         });
     }
   }
-
-  login = async () => {
-    const { username, password } = this.state;
-    try {
-      const res = await axios.post("/auth/login", { username, password });
-      swal.fire({
-        type: "error",
-        text: "Wrong password or wrong Username",
-        showConfirmButton: false,
-        timer: 1500
-      });
-      if (res.data.user) {
-        this.updateUser(res.data.user);
-        this.props.history.push("/home");
-        swal.fire({
-          type: "success",
-          text: res.data.message,
-          showConfirmButton: false,
-          timer: 800
-        });
-      }
-    } catch (error) {
-      swal.fire({
-        type: "error",
-        text: "Wrong password or wrong email",
-        showConfirmButton: false,
-        timer: 1500
-      });
+  // LOGIN
+  login = async ()=>{
+    const {username, password} = this.state
+    if(username === '' || password === ''){
+      return swal.fire({type:'error', text: 'please fill all input boxes'})
     }
-  };
+    const res = await axios.post('/auth/login', {username, password})
+    if(res.data.user){
+      let user = {user: {user_id: res.data.user.user_id, username: res.data.user.username}, loggedIn: res.data.loggedIn}
+      this.props.updateUser(user)
+      
+      this.props.history.push('/home')
+      
+    }
+    // swal.fire(res.data.message)
+  }
+
+  // login = async () => {
+  //   const { username, password } = this.state;
+  //   try {
+  //     const res = await axios.post("/auth/login", { username, password });
+  //     swal.fire({
+  //       type: "error",
+  //       text: "Wrong password or wrong Username",
+  //       showConfirmButton: false,
+  //       timer: 1500
+  //     });
+  //     if (res.data.user) {
+  //       this.updateUser(res.data.user);
+  //       this.props.history.push("/home");
+  //       swal.fire({
+  //         type: "success",
+  //         text: res.data.message,
+  //         showConfirmButton: false,
+  //         timer: 800
+  //       });
+  //     }
+  //   } catch (error) {
+  //     swal.fire({
+  //       type: "error",
+  //       text: "Wrong password or wrong email",
+  //       showConfirmButton: false,
+  //       timer: 1500
+  //     });
+  //   }
+  // };
   render() {
     return (
       <div className="landing-box">
         {!this.state.register ? (
-          <div>
+          <div className="login-box">
             <div className="login">
               <div className="input-titles">Username</div>
               <input
@@ -142,6 +158,9 @@ class Login extends Component {
                   <button className="enter" onClick={() => this.login()}>
                     Login
                   </button>
+                  <Link to="/howto">
+                    <button className="aboutbutton">How to play</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -185,13 +204,13 @@ class Login extends Component {
                 <button className="enter" onClick={() => this.register()}>
                   Register
                 </button>
+                <Link to="/howto">
+                  <button className="aboutbutton">How to play</button>
+                </Link>
               </div>
             </div>
           </div>
         )}
-        <Link to="/howto">
-          <button className="aboutbutton">How to play</button>
-        </Link>
       </div>
     );
   }
