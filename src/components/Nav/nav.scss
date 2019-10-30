@@ -1,6 +1,11 @@
+@import '../../variables.scss';
+
 .Nav {
-    background: linear-gradient(50deg, blue, green);
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    height: 9vh;
+    width: 100%;
+    background-size: cover;
+    background-image: url('../assets/jamestown.jpg');
 }
-

@@ -1,6 +1,6 @@
 const initialState = {
-    user: null,
-    loggedIn: false
+    loggedIn: false,
+    user: null
 }
 
 const UPDATE_USER = 'UPDATE_USER'
@@ -16,7 +16,7 @@ export const updateUser = (userObj)=>{
 const reducer = (state = initialState, action)=>{
     switch(action.type){
         case UPDATE_USER:
-            return{...state, user: action.payload}
+            return{...state, user: action.payload, loggedIn: action.payload.loggedIn}
         default: return state
     }
 } 
