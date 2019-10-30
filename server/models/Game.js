@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 
 const GameSchema = new mongoose.Schema({
     gameroom_id: {type: 'number'},
-    host: [Board],
-    guest: [Board]
+    hostBoard: {type: 'array'},
+    guestBoard: {type: 'array'}
 })
 
 module.exports = mongoose.model("Game", GameSchema)
