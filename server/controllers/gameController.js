@@ -12,6 +12,8 @@ module.exports = {
         // console.log(timestamp)
 
         const gameroom_id = await db.add_gameroom([user_id, guest_id, timestamp])
+        console.log(gameroom_id)
+        const game_active = await db.add_active_game([gameroom_id[0].gameroom_id, user_id, guest_id])
         // console.log(gameroom_id)
         // console.log(emptyBoard.emptyBoard)
         let newGame = new Game()
@@ -32,5 +34,24 @@ module.exports = {
             
         })
 
-    }
+    },
+
+    // async endGame(req, res) {
+    //     const db = req.app.get('db')
+    //     const {gameroom_id, winner_id} = req.params
+
+    //     const gameroom = await db.get_gameroom(gameroom_id)
+    //     console.log([gameroom[0].host_id, gameroom[0].guest_id])
+    //     const friendship = await db.check_friendship([gameroom[0].host_id, gameroom[0].guest_id])
+    //     console.log(gameroom)
+    //     console.log(friendship)
+    //     if (friendship[0].friend1 === winner_id) {
+    //         const friend1_updated = await db.update_friend1_wins([friendship[0].friendship_id, friendship[0].friend1_wins + 1])
+    //     } else {
+    //         const friend2_updated = await db.update_friend2_wins([friendship[0].friendship_id, friendship[0].friend2_wins + 1])
+    //     }
+
+    //     const winner = await db.get_user(winner_id)
+
+    // }
 }
