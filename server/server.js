@@ -35,6 +35,7 @@ app.get('/api/games', socialCtrl.getActiveGames)
 // GAME ENDPOINTS
 
 app.post('/api/games/new/:guest_id', gameCtrl.createNewGame)
+// app.delete('/api/games/end/:gameroom_id/:winner_id', gameCtrl.endGame)
 
 
 
