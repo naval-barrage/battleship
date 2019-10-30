@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import './yourGrid.scss'
+import './enemyGrid.scss'
 
-export default class YourGrid extends Component {
+export default class EmyGrid extends Component {
     constructor() {
         super()
         this.state = {
-            
             // 0 = empty
             // 1 = submarine(3)
             // 2 = destroyer(2)
@@ -15,7 +14,7 @@ export default class YourGrid extends Component {
             // 6 = miss
             // 7 = hit
             
-            yourGrid : [
+            enemyGrid : [
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -30,11 +29,10 @@ export default class YourGrid extends Component {
         }
     }
     render() {
-    return (
-        <div>
-            {this.state.yourGrid}
+        return(
+            <div className='EmyGrid'>
+                Emy Grid
         </div>
-        );
+        )
     }
 }
-

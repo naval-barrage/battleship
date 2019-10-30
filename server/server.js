@@ -3,7 +3,8 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const chalk = require('chalk')
-const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
+const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, MONGO_CONNECTION_STRING} = process.env
+const mongoose = require('mongoose')
 const authCtrl = require('./controllers/authController')
 const socialCtrl = require('./controllers/socialController')
 
@@ -32,6 +33,15 @@ app.get('/api/games', socialCtrl.getActiveGames)
 
 // GAME ENDPOINTS
 
+mongoose.connect(MONGO_CONNECTION_STRING).then(dbInstance => {
+    app.set('mdb', dbInstance)
+    console.log(chalk.blue('mongo db connected'))
+})
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
 
 massive(CONNECTION_STRING)
     .then(dbInstance =>{
