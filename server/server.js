@@ -7,6 +7,7 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, MONGO_CONNECTION_STRING} 
 const mongoose = require('mongoose')
 const authCtrl = require('./controllers/authController')
 const socialCtrl = require('./controllers/socialController')
+const gameCtrl = require('./controllers/gameController')
 
 const app = express()
 
@@ -33,7 +34,13 @@ app.get('/api/games', socialCtrl.getActiveGames)
 
 // GAME ENDPOINTS
 
-mongoose.connect(MONGO_CONNECTION_STRING).then(dbInstance => {
+app.post('/api/games/new/:guest_id', gameCtrl.createNewGame)
+
+
+
+// DB STUFF
+
+mongoose.connect(MONGO_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true}).then(dbInstance => {
     app.set('mdb', dbInstance)
     console.log(chalk.blue('mongo db connected'))
 })

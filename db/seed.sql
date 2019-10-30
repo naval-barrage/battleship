@@ -86,17 +86,16 @@ CREATE TABLE gameroom (
     gameroom_id SERIAL PRIMARY KEY,
     host_id INT REFERENCES users(user_id),
     guest_id INT REFERENCES users(user_id),
-    host_board_id INT REFERENCES boards(board_id),
-    guest_board_id INT REFERENCES boards(board_id),
     turn INT REFERENCES users(user_id),
-    starting_time TIMESTAMP,
+    starting_time TEXT,
     total_turns INT,
     host_hits INT,
     guest_hits INT,
     host_misses INT,
     guest_misses INT,
     host_ships_sunk INT,
-    guest_ships_sunk INT
+    guest_ships_sunk INT,
+    game_id TEXT
 );
 
 ALTER TABLE boards
