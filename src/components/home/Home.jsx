@@ -21,7 +21,7 @@ export default class Home extends Component {
                 <Friends/>
                 <Search/>
                 <Active/>
-                <Link to='/howto'><button>how to play</button></Link>
+                <Link to='/howto'><button className='enter'><i class="fas fa-question"></i></button></Link>
         </div>
     </div>
         )
