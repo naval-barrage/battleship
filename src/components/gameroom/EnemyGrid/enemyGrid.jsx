@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './emyGrid.scss'
+import './enemyGrid.scss'
 
 export default class EmyGrid extends Component {
     constructor() {
@@ -14,7 +14,7 @@ export default class EmyGrid extends Component {
             // 6 = miss
             // 7 = hit
             
-            enemyGrid = [
+            enemyGrid : [
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

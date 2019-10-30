@@ -35,7 +35,7 @@ app.get('/api/games', socialCtrl.getActiveGames)
 
 mongoose.connect(MONGO_CONNECTION_STRING).then(dbInstance => {
     app.set('mdb', dbInstance)
-    console.log('mongo db connected')
+    console.log(chalk.blue('mongo db connected'))
 })
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

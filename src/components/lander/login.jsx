@@ -117,7 +117,7 @@ class Login extends Component {
     return (
       <div className="landing-box">
         {!this.state.register ? (
-          <div>
+          <div className="login-box">
             <div className="login">
               <div className="input-titles">Username</div>
               <input
@@ -142,6 +142,9 @@ class Login extends Component {
                   <button className="enter" onClick={() => this.login()}>
                     Login
                   </button>
+                  <Link to="/howto">
+                    <button className="aboutbutton">How to play</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -185,13 +188,13 @@ class Login extends Component {
                 <button className="enter" onClick={() => this.register()}>
                   Register
                 </button>
+                <Link to="/howto">
+                  <button className="aboutbutton">How to play</button>
+                </Link>
               </div>
             </div>
           </div>
         )}
-        <Link to="/howto">
-          <button className="aboutbutton">How to play</button>
-        </Link>
       </div>
     );
   }
