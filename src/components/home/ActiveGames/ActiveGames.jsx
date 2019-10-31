@@ -17,16 +17,23 @@ export default class ActiveGames extends Component {
         })
     }
     render() {
-        console.log(this.state.activeGames)
+        // console.log(this.state.activeGames.length)
         return(
             <div className='ActiveGames'>
+                <div>Active Games list:</div>
                     {
-                    this.state.activeGames.length ? 0 (
+                    this.state.activeGames.length ? (
                         this.state.activeGames.map(activeGames => {
                             return (
                                 <div className='List-of-friends'>
                         <div className="FriendOnline">
-                            {`${this.state.activeGames}`}
+                            <div>dsjflkdsj</div>
+                            {activeGames.length === 0 ? (
+                                <div>No games active</div>
+                                ) : (
+                                // <div>{`${activeGames}`}</div>
+                                <div>games</div>
+                            )}
                         </div>
                     </div>
                     )

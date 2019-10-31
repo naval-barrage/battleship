@@ -21,7 +21,7 @@ export default class Search extends Component {
             this.setState({
                 searchResults: res.data
             })
-            console.log(res)
+            // console.log(res)
         })
     }
     handleAdd(user_id) {

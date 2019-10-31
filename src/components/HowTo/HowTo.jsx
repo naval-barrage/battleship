@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import './howTo.scss'
 import Nav from './../Nav/Nav'
 import {Link} from 'react-router-dom'
+// import { connect } from "react-redux";
+// import { updateUser } from "../../redux/reducer";
 
-export default class HoWTo extends Component {
+class HoWTo extends Component {
     constructor() {
         super()
         this.state = {
@@ -49,3 +51,9 @@ export default class HoWTo extends Component {
         )
     }
 }
+// function mapStateToProps(state) {
+//     const { user } = state;
+//     return { user };
+// }
+
+export default HoWTo;
