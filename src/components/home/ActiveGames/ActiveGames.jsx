@@ -4,7 +4,6 @@ import {withRouter} from 'react-router-dom'
 import './activeGames.scss'
 import axios from 'axios'
 import { connect } from "react-redux";
-//checking git hub - test 3
 
 class ActiveGames extends Component {
     constructor() {
