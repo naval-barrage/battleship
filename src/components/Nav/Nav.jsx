@@ -44,7 +44,7 @@ class Nav extends Component {
         return(
         <div className='Nav'>
             <Link to='/home'><button className='enter'><i class="fas fa-anchor"></i>Home</button></Link>
-            <Link to='/gameroom'><button className='enter'><i class="fas fa-ship"></i>Gameroom</button></Link>
+            {/* <Link to='/gameroom'><button className='enter'><i class="fas fa-ship"></i>Gameroom</button></Link> */}
             <button onClick={() => this.logout()} className='logout-button'><i class="fas fa-sign-out-alt"></i>Logout</button>
         </div>
         )
