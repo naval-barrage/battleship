@@ -13,10 +13,19 @@ class Gameroom extends Component {
     constructor() {
         super()
         this.state = {
+            // 0 = empty
+            // 1 = submarine(3)
+            // 2 = destroyer(2)
+            // 3 = cruiser(3)
+            // 4 = battleship(4)
+            // 5 = carrier(5)
+            // 6 = miss
+            // 7 = hit
             yourGrid: [],
             enemyGrid: [],
             friendStats: {},
-            gameStats: {}
+            gameStats: {},
+            yourTurn: false
         }
     }
 
@@ -36,6 +45,9 @@ class Gameroom extends Component {
                     friendStats: res.data.friendship,
                     gameStats: res.data.gameroom
                 })
+                if (res.data.gameroom.turn === this.props.user.user.user_id) {
+                    this.setState({yourTurn: true})
+                }
             } else {
                 console.log('you are the guest')
                 this.setState({
@@ -44,18 +56,50 @@ class Gameroom extends Component {
                     friendStats: res.data.friendship,
                     gameStats: res.data.gameroom
                 })
+                if (res.data.gameroom.turn === this.props.user.user.user_id) {
+                    this.setState({yourTurn: true})
+                }
             }
         })
     }
+
+    updateEnemyGrid = (grid) => {
+        this.setState({enemyGrid: grid})
+    }
+
+    updateYourGrid = (grid) => {
+        this.setState({yourGrid: grid})
+    }
+
+    updateGame = (winner_id, turn_result, ship_sunk) => {
+        axios.put(`/api/game/${+this.props.match.params.gameroom}/${winner_id}?turn_result=${turn_result}&ship_sunk=${ship_sunk}`, this.state.yourGrid).then(res => {
+            // IF ENEMY BOARD HAS NO 2-5 END GAME
+            this.setState({yourTurn: false})
+            axios.put(`/api/users/img/${winner_id}`).then(res => {
+                // UPDATES USER IMAGE
+            })
+        })
+        // TURN COMPLETE METHOD
+        // CONDITIONAL RENDER BELLOW IF ITS OPPONENTS TURN
+    }
+
+    endGame = (winner_id) => {
+        axios.delete(`/api/games/end/${+this.props.match.prams.gameroom}/${winner_id}`).then(res => {
+        })
+        // MESSAGE OF GAME END
+        // SEND BACK TO HOME SCREEN
+    }
+
+
     render() {
         return(
         <div>
                 <Nav/>
             <div className='Gameroom'>
                 <Ships/>
-                <YourGrid grid={this.state.yourGrid}/>
+                <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-                <EnemyGrid grid={this.state.enemyGrid}/>
+                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid}/>
         </div>
     </div>
         )
