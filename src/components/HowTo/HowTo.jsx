@@ -2,20 +2,19 @@ import React, {Component} from 'react'
 import './howTo.scss'
 import Nav from './../Nav/Nav'
 import {Link} from 'react-router-dom'
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 // import { updateUser } from "../../redux/reducer";
 
 class HoWTo extends Component {
     constructor() {
         super()
         this.state = {
-            loggedIn: false
         }
     }
     render() {
         return(
             <div className='HowTo'>
-                {!this.state.loggedIn
+                {!this.props.loggedIn
             ? (
             <div>
                 <Link to='/'><button>Back</button></Link>
@@ -51,9 +50,9 @@ class HoWTo extends Component {
         )
     }
 }
-// function mapStateToProps(state) {
-//     const { user } = state;
-//     return { user };
-// }
+function mapStateToProps(state) {
+    const { user, loggedIn } = state;
+    return { user, loggedIn };
+}
 
-export default HoWTo;
+export default connect(mapStateToProps)(HoWTo);
