@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import './activeGames.scss'
 import axios from 'axios'
-import { connect } from "react-redux";
-import {withRouter} from 'react-router-dom'
 import swal from 'sweetalert2'
+import { connect } from "react-redux";
 //checking git hub - test 2
 
 class ActiveGames extends Component {
