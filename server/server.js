@@ -31,6 +31,7 @@ app.post('/api/friends/:new_friend_id', socialCtrl.newFriends)
 app.get('/api/friends', socialCtrl.getFriends)
 app.get('/api/users', socialCtrl.getUsers)
 app.get('/api/games', socialCtrl.getActiveGames)
+app.put('/api/users/img/:user_id', socialCtrl.updateUserImg)
 
 // GAME ENDPOINTS
 
