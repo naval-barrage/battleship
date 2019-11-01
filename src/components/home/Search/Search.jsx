@@ -17,12 +17,15 @@ export default class Search extends Component {
         });
     };
     handleSearch() {
-        axios.get(`/api/users?username=${this.state.username}`).then(res => {
-            this.setState({
-                searchResults: res.data
+        if (this.state.username !== '') {
+            axios.get(`/api/users?username=${this.state.username}`).then(res => {
+                this.setState({
+                    searchResults: res.data
+                })
             })
-            console.log(res)
-        })
+        } else {
+            swal.fire({type: 'error' , text: 'Please input a username to search for user' , showConfirmButton: false, timer: 1000})
+        }
     }
     handleAdd(user_id) {
         axios.post(`/api/friends/${+user_id}`).then(res => {
@@ -32,6 +35,7 @@ export default class Search extends Component {
     render() {
         return(
             <div className='Search'>
+                Search For Friends:
                 <div className="searchInput">
                     <input onChange={(e) => this.handleChange(e, "username")} type="text" placeholder="Search"/>
                     <button onClick={() => this.handleSearch()}>Search</button>
