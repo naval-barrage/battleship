@@ -131,6 +131,16 @@ class Login extends Component {
   // };
   render() {
     return (
+      <div className='lander-container'>
+        <h1 className="title">NAVAL BARRAGE</h1>
+        <div className="banner">
+        <h5>THE CLASSIC NAVAL WARFARE GAME</h5>
+        </div>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
       <div className="landing-box">
         {!this.state.register ? (
           <div className="login-box">
@@ -140,19 +150,19 @@ class Login extends Component {
                 onChange={e => this.handleChange(e, "username")}
                 type="text"
                 placeholder="Username"
-              />
+                />
               <div className="input-titles">Your Password</div>
               <input
                 onChange={e => this.handleChange(e, "password")}
                 type="password"
                 placeholder="Password"
-              />
+                />
               <div>
                 <div className="log">
                   <button
                     className="regbutton"
                     onClick={() => this.toggleChange()}
-                  >
+                    >
                     Register
                   </button>
                   <button className="enter" onClick={() => this.login()}>
@@ -166,7 +176,7 @@ class Login extends Component {
             </div>
           </div>
         ) : (
-          <div className="register-box">
+          <div className="login-box">
             <div className="input-titles">Create a Username</div>
             <input
               onChange={e => this.handleChange(e, "email")}
@@ -178,7 +188,7 @@ class Login extends Component {
                 onChange={e => this.handleChange(e, "username")}
                 type="text"
                 placeholder="Username"
-              />
+                />
             </div>
             <div className="input-titles">Set a password</div>
             <div>
@@ -186,19 +196,19 @@ class Login extends Component {
                 onChange={e => this.handleChange(e, "password")}
                 type="password"
                 placeholder="Password"
-              />
+                />
             </div>
             <input
               onChange={e => this.handleChange(e, "password2")}
               type="password"
               placeholder="Repeat Password"
-            />
+              />
             <div>
               <div className="log">
                 <button
                   className="regbutton"
                   onClick={() => this.toggleChange()}
-                >
+                  >
                   Back to Login
                 </button>
                 <button className="enter" onClick={() => this.register()}>
@@ -212,6 +222,7 @@ class Login extends Component {
           </div>
         )}
       </div>
+</div>
     );
   }
 }

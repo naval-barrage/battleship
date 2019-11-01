@@ -35,12 +35,15 @@ app.get('/api/games', socialCtrl.getActiveGames)
 // GAME ENDPOINTS
 
 app.post('/api/games/new/:guest_id', gameCtrl.createNewGame)
+app.delete('/api/games/end/:gameroom_id/:winner_id', gameCtrl.endGame)
+app.get('/api/game/:gameroom_id', gameCtrl.getGame)
+app.put('/api/game/:gameroom_id/:user_id', gameCtrl.updateGame)
 
 
 
 // DB STUFF
 
-mongoose.connect(MONGO_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true}).then(dbInstance => {
+mongoose.connect(MONGO_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(dbInstance => {
     app.set('mdb', dbInstance)
     console.log(chalk.blue('mongo db connected'))
 })
