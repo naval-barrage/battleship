@@ -1,1 +1,10 @@
 @import '../../../variables.scss';
+
+.FriendOnline {
+    img {
+        height: 30px;
+        width: 30px;
+        clip-path: circle(43%);
+        font-size: 7px;
+    }
+}
