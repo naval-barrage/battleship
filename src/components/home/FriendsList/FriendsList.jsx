@@ -23,9 +23,6 @@ class FriendsList extends Component {
 
         })
     }
-    findRatio(user_id) {
-
-    }
     render() {
         return(
             <div className='FriendsList'>
@@ -36,13 +33,12 @@ class FriendsList extends Component {
                             return (
                                 <div className='List-of-friends'>
                         <div className="FriendOnline">
-                            <button onClick={() => this.findRatio(this.props.user)}>get win lose</button>
-                            {console.log(this.props.user)}
+                            {console.log(this.state.friendsList[i])}
                             {`${this.state.friendsList[i].friend_info[0].img}  `}
                             {`${this.state.friendsList[i].friend_info[0].username}`}
+                            {` Wins: ${this.state.friendsList[i].friendship_info.friend1_wins} loses: ${this.state.friendsList[i].friendship_info.friend2_wins}`}
                             {!this.state.friendsList[i].friendship_info.game_active ? (
                                 <button onClick={() => this.handleStartGame(friendsList.user_id)}>
-                                {/* {console.log(this.state.friendsList)} */}
                                 Start Game</button>
                             ) : ( 
                                 <button>Game Active</button>
