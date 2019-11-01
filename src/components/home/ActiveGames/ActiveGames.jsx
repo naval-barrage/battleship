@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import './activeGames.scss'
 import axios from 'axios'
 import { connect } from "react-redux";
-import {withRouter} from 'react-router-dom'
-import swal from 'sweetalert2'
 
 class ActiveGames extends Component {
     constructor() {
@@ -40,13 +38,13 @@ class ActiveGames extends Component {
                         return (
                             <div className='results-active'>
                                 <div className="ListOfActive">
-                                    {/* {console.log(activeGames.game_info.gameroom_id)} */}
-                                    <img src={activeGames.friend_info[0].img} alt='Boat to show ranking'/>
+                                    {/* {console.log(activeGames)} */}
+                                    {`${activeGames.friend_info[0].img}  `}
                                     {`Game with ${activeGames.friend_info[0].username} `}
                                 {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
-                                    <button onClick={() => this.goToGame(activeGames.game_info.gameroom_id)}>Its your turn!!!!</button>
-                                    ) : (
                                     <button>its not your turn</button>
+                                ) : (
+                                    <button>Its your turn!!!!</button>
                                 )}
                                 </div>
                             </div>
@@ -65,4 +63,4 @@ function mapStateToProps(state) {
     return { user, loggedIn };
 }
 
-export default connect(mapStateToProps)(withRouter(ActiveGames));
+export default connect(mapStateToProps)(ActiveGames);
