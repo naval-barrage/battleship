@@ -1,10 +1,10 @@
+import swal from 'sweetalert2'
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import './activeGames.scss'
 import axios from 'axios'
-import swal from 'sweetalert2'
 import { connect } from "react-redux";
-//checking git hub - test 2
+//checking git hub - test 3
 
 class ActiveGames extends Component {
     constructor() {
