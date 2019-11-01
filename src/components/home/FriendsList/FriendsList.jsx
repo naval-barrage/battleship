@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import './friendsList.scss'
 import axios from 'axios'
 import { connect } from "react-redux";
-// import swal from 'sweetalert2'
+import swal from 'sweetalert2'
+import {withRouter} from 'react-router-dom'
 
 class FriendsList extends Component {
     constructor() {
@@ -18,9 +19,10 @@ class FriendsList extends Component {
             })
         })
     }
-    handleStartGame(user_id) {
-        axios.post(`/api/games/new/${+user_id}`).then(res => {
-
+    handleStartGame(guest_id) {
+        axios.post(`/api/games/new/${+guest_id}`).then(res => {
+            swal.fire({type: 'success' , text: 'Game Started' , showConfirmButton: false, timer: 1000})
+            this.props.history.push("/gameroom")
         })
     }
     render() {
@@ -33,12 +35,12 @@ class FriendsList extends Component {
                             return (
                                 <div className='List-of-friends'>
                         <div className="FriendOnline">
-                            {console.log(this.state.friendsList[i])}
-                            {`${this.state.friendsList[i].friend_info[0].img}  `}
+                            {/* {console.log(this.state.friendsList)} */}
+                            <img src={this.state.friendsList[i].friend_info[0].img} alt="A boat to show ranking"/>
                             {`${this.state.friendsList[i].friend_info[0].username}`}
                             {` Wins: ${this.state.friendsList[i].friendship_info.friend1_wins} loses: ${this.state.friendsList[i].friendship_info.friend2_wins}`}
                             {!this.state.friendsList[i].friendship_info.game_active ? (
-                                <button onClick={() => this.handleStartGame(friendsList.user_id)}>
+                                <button onClick={() => this.handleStartGame(friendsList.friend_info[0].user_id)}>
                                 Start Game</button>
                             ) : ( 
                                 <button>Game Active</button>
@@ -58,4 +60,4 @@ function mapStateToProps(state) {
     return { user, loggedIn };
 }
 
-export default connect(mapStateToProps)(FriendsList);
+export default connect(mapStateToProps)(withRouter(FriendsList));
