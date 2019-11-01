@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import './activeGames.scss'
 import axios from 'axios'
+import { connect } from "react-redux";
 
-export default class ActiveGames extends Component {
+class ActiveGames extends Component {
     constructor() {
         super()
         this.state = {
@@ -17,23 +18,42 @@ export default class ActiveGames extends Component {
         })
     }
     render() {
-        console.log(this.state.activeGames)
         return(
             <div className='ActiveGames'>
-                    {
-                    this.state.activeGames.length ? 0 (
-                        this.state.activeGames.map(activeGames => {
-                            return (
-                                <div className='List-of-friends'>
-                        <div className="FriendOnline">
-                            {`${this.state.activeGames}`}
-                        </div>
-                    </div>
-                    )
+                <div>Active Games list:</div>
+                    {this.state.activeGames.length < 1 ? (
+                        <div>no active games</div>
+                    ) : (
+                <div>
+                {
+                    this.state.activeGames.length ? (
+                    this.state.activeGames.map((activeGames, i) => {
+                        return (
+                            <div className='results-active'>
+                                <div className="ListOfActive">
+                                    {/* {console.log(activeGames)} */}
+                                    {`${activeGames.friend_info[0].img}  `}
+                                    {`Game with ${activeGames.friend_info[0].username} `}
+                                {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
+                                    <button>its not your turn</button>
+                                ) : (
+                                    <button>Its your turn!!!!</button>
+                                )}
+                                </div>
+                            </div>
+                        )
                 })
                 ) : null
             }
+            </div>
+            )}
         </div>
         )
     }
 }
+function mapStateToProps(state) {
+    const { user, loggedIn } = state;
+    return { user, loggedIn };
+}
+
+export default connect(mapStateToProps)(ActiveGames);
