@@ -4,7 +4,7 @@ import axios from 'axios'
 import { connect } from "react-redux";
 import {withRouter} from 'react-router-dom'
 import swal from 'sweetalert2'
-//checking git hub
+//checking git hub - test 2
 
 class ActiveGames extends Component {
     constructor() {
