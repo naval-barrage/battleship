@@ -142,7 +142,7 @@ module.exports = {
             //         res.send(data)
             //     }
             // })
-            Game.findByIdAndUpdate(gameroom[0].game_id, {"host": grid}, function (err, game) {
+            Game.findByIdAndUpdate(gameroom[0].game_id, {"guest": grid}, function (err, game) {
                 if (err) {
                     console.log(err)
                 } else {
@@ -168,7 +168,7 @@ module.exports = {
             console.log([guest_hits, guest_misses, guest_ships_sunk, total_turns])
             const guest_update = await db.update_gameroom_guest_turn([gameroom[0].host_id, guest_hits, guest_misses, guest_ships_sunk, total_turns, gameroom_id])
             // UPDATE GUEST BOARD AND SEND
-            Game.findByIdAndUpdate(gameroom[0].game_id, {"guest": grid}, function (err, game) {
+            Game.findByIdAndUpdate(gameroom[0].game_id, {"host": grid}, function (err, game) {
                 if (err) {
                     console.log(err)
                 } else {
@@ -176,6 +176,41 @@ module.exports = {
                 }
             })
 
+        }
+    },
+
+    async setShips(req, res) {
+        const db = req.app.get('db')
+        const {gameroom_id, user_id} = req.params
+        const {grid} = req.body
+
+        const gameroom = await db.get_gameroom(gameroom_id)
+
+        let user
+        if (+user_id === +gameroom[0].host_id) {
+            user = 'host'
+        } else {
+            user = 'guest'
+        }
+
+        if (user === 'host') {
+            let update_turn = await db.update_turn([gameroom[0].guest_id, gameroom_id])
+            Game.findByIdAndUpdate(gameroom[0].game_id, {"host": grid}, function (err, game) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.status(200).send({gameroom: gameroom[0], game})
+                }
+            })
+        } else {
+            let finish_ship_placement = await db.finish_ship_placement([gameroom[0].host_id, gameroom_id])
+            Game.findByIdAndUpdate(gameroom[0].game_id, {"guest": grid}, function (err, game) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.status(200).send({gameroom: gameroom[0], game})
+                }
+            })
         }
     }
 }

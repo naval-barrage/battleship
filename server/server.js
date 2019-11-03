@@ -39,6 +39,7 @@ app.post('/api/games/new/:guest_id', gameCtrl.createNewGame)
 app.delete('/api/games/end/:gameroom_id/:winner_id', gameCtrl.endGame)
 app.get('/api/game/:gameroom_id', gameCtrl.getGame)
 app.put('/api/game/:gameroom_id/:user_id', gameCtrl.updateGame)
+app.put('/api/game/start/:gameroom_id/:user_id', gameCtrl.setShips)
 
 
 
