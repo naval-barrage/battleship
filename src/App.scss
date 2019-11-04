@@ -20,3 +20,19 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px black;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #288ebc;
+  border-radius: 10px;
+}
