@@ -47,23 +47,23 @@ class EnemyGrid extends Component {
     console.log(i2);
 
     if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
-      let newGrid1 = this.state.enemygrid;
+      let newGrid1 = this.state.enemyGrid;
       newGrid1[i1][i2] = 7;
       this.setState({
-        enemygrid: newGrid1
+        enemyGrid: newGrid1
       });
     } else {
       console.log("test");
-      let newGrid = this.state.enemygrid;
+      let newGrid = this.state.enemyGrid;
       newGrid[i1][i2] = 6;
       this.setState({
-        enemygrid: newGrid
+        enemyGrid: newGrid
       });
       console.log(this.state);
     }
   };
   render() {
-    const mappedGrid = this.state.enemygrid.map((element, i1) => {
+    const mappedGrid = this.state.enemyGrid.map((element, i1) => {
       return element.map((element2, i2) => {
         switch (element2) {
           case 0:
