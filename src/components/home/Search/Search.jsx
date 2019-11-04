@@ -8,7 +8,8 @@ export default class Search extends Component {
         super()
         this.state = {
             username: '',
-            searchResults: []
+            searchResults: [],
+            toggleSearch: false
         }
     }
     handleChange = (e, key) => {
@@ -20,7 +21,8 @@ export default class Search extends Component {
         if (this.state.username !== '') {
             axios.get(`/api/users?username=${this.state.username}`).then(res => {
                 this.setState({
-                    searchResults: res.data
+                    searchResults: res.data,
+                    toggleSearch: !this.state.toggleSearch
                 })
             })
         } else {
@@ -35,27 +37,32 @@ export default class Search extends Component {
     render() {
         return(
             <div className='Search'>
+                <div className="friendInput">
                 Search For Friends:
                 <div className="searchInput">
                     <input onChange={(e) => this.handleChange(e, "username")} type="text" placeholder="Search"/>
-                    <button onClick={() => this.handleSearch()}>Search</button>
+                    <button className='zulu' onClick={() => this.handleSearch()}>Search</button>
                 </div>
-                <div className="searchResults">
-                {
-                this.state.searchResults.length ? (
-                this.state.searchResults.map(searchResults => {
-                    return (
-                    <div className='results'>
-                        <div className="ListOfUsers">
-                            {`${searchResults.username}`}
-                            <button onClick={() => this.handleAdd(searchResults.user_id)}>Add Friend</button>
+                </div>
+                {this.state.toggleSearch ? (
+                    <div className="searchResults">
+                    {
+                        this.state.searchResults.length ? (
+                            this.state.searchResults.map(searchResults => {
+                                return (
+                                    <div className='results'>
+                            <div className="ListOfUsers">
+                                {`${searchResults.username}`}
+                                <button className='kilo' onClick={() => this.handleAdd(searchResults.user_id)}>Add Friend</button>
+                            </div>
                         </div>
+                        )
+                    })
+                    ) : null
+                }
                     </div>
-                    )
-                })
                 ) : null
-            }
-                </div>
+                }
         </div>
         )
     }

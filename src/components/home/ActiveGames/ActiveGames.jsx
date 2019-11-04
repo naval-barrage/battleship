@@ -30,9 +30,10 @@ class ActiveGames extends Component {
         return(
             <div className='ActiveGames'>
                 <div>Active Games list:</div>
+                <div className='active'>
                     {this.state.activeGames.length < 1 ? (
                         <div>no active games</div>
-                    ) : (
+                        ) : (
                 <div>
                 {
                     this.state.activeGames.length ? (
@@ -41,21 +42,31 @@ class ActiveGames extends Component {
                             <div className='results-active'>
                                 <div className="ListOfActive">
                                     {/* {console.log(activeGames)} */}
-                                    {`${activeGames.friend_info[0].img}  `}
+                                    <img src={activeGames.friend_info[0].img} alt='Boat to show ranking'/>
                                     {`Game with ${activeGames.friend_info[0].username} `}
                                 {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
-                                    <button>its not your turn</button>
-                                ) : (
-                                    <button>Its your turn!!!!</button>
+                                    <button onClick={() => this.goToGame(activeGames.game_info.gameroom_id)}>Its your turn!!!!</button>
+                                    ) : (
+                                        <div class="razar">
+                                        <div class="ringbase ring1"></div>
+                                        <div class="ringbase ring2"></div>
+                                        <div class="pulse"></div>
+                                        <div class="pointer">
+                                        <div></div>
+                                        </div>
+                                        <div class="dot pos1"></div>
+                                        <div class="dot pos2"></div>
+                                    </div>
                                 )}
                                 </div>
                             </div>
                         )
-                })
-                ) : null
-            }
+                    })
+                    ) : null
+                }
             </div>
             )}
+            </div>
         </div>
         )
     }
@@ -65,4 +76,4 @@ function mapStateToProps(state) {
     return { user, loggedIn };
 }
 
-export default connect(mapStateToProps)(ActiveGames);
+export default connect(mapStateToProps)(withRouter(ActiveGames));

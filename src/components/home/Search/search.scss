@@ -1,1 +1,45 @@
 @import '../../../variables.scss';
+@mixin buttons() {
+    background-size: cover;
+    color: white;
+    border-color: black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.Search {
+    margin: 4%;
+    width: 70%;
+    height: auto;
+    padding: 10px;
+}
+.friendInput {
+    background: linear-gradient(50deg, #288ebc, #2d4957);
+    height: 55px;
+    width: 100%;
+    color: white;
+    box-sizing: border-box;
+    border: 1px solid black;
+
+}
+.zulu {
+    background-image: url('../../assets/Flags/zulu.png');
+    @include buttons();
+}
+.kilo {
+    background-image: url('../../assets/Flags/kilo.webp');
+    font-size: 12px;
+    @include buttons();
+}
+.searchResults {
+    width: 100%;
+    height: 150px;
+    background: #288ebc;
+    overflow-y: scroll;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+.ListOfUsers {
+    display: flex;
+    justify-content: space-between;
+}
