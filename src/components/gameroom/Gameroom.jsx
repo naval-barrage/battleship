@@ -25,7 +25,8 @@ class Gameroom extends Component {
             enemyGrid: [],
             friendStats: {},
             gameStats: {},
-            yourTurn: false
+            yourTurn: false,
+            shipsSet: false
         }
     }
 
@@ -43,7 +44,8 @@ class Gameroom extends Component {
                     yourGrid: res.data.game.host,
                     enemyGrid: res.data.game.guest,
                     friendStats: res.data.friendship,
-                    gameStats: res.data.gameroom
+                    gameStats: res.data.gameroom,
+                    shipsSet: res.data.gameroom.ships_placed
                 })
                 if (res.data.gameroom.turn === this.props.user.user.user_id) {
                     this.setState({yourTurn: true})
@@ -54,7 +56,8 @@ class Gameroom extends Component {
                     yourGrid: res.data.game.guest,
                     enemyGrid: res.data.game.host,
                     friendStats: res.data.friendship,
-                    gameStats: res.data.gameroom
+                    gameStats: res.data.gameroom,
+                    shipsSet: res.data.gameroom.ships_placed
                 })
                 if (res.data.gameroom.turn === this.props.user.user.user_id) {
                     this.setState({yourTurn: true})
@@ -63,32 +66,32 @@ class Gameroom extends Component {
         })
     }
 
-    updateEnemyGrid = (grid) => {
-        this.setState({enemyGrid: grid})
-    }
+    // updateEnemyGrid = (grid) => {
+    //     this.setState({enemyGrid: grid})
+    // }
 
-    updateYourGrid = (grid) => {
-        this.setState({yourGrid: grid})
-    }
+    // updateYourGrid = (grid) => {
+    //     this.setState({yourGrid: grid})
+    // }
 
-    updateGame = (winner_id, turn_result, ship_sunk) => {
-        axios.put(`/api/game/${+this.props.match.params.gameroom}/${winner_id}?turn_result=${turn_result}&ship_sunk=${ship_sunk}`, this.state.yourGrid).then(res => {
-            // IF ENEMY BOARD HAS NO 2-5 END GAME
-            this.setState({yourTurn: false})
-            axios.put(`/api/users/img/${winner_id}`).then(res => {
-                // UPDATES USER IMAGE
-            })
-        })
-        // TURN COMPLETE METHOD
-        // CONDITIONAL RENDER BELLOW IF ITS OPPONENTS TURN
-    }
+    // updateGame = (winner_id, turn_result, ship_sunk) => {
+    //     axios.put(`/api/game/${+this.props.match.params.gameroom}/${winner_id}?turn_result=${turn_result}&ship_sunk=${ship_sunk}`, this.state.yourGrid).then(res => {
+    //         // IF ENEMY BOARD HAS NO 2-5 END GAME
+    //         this.setState({yourTurn: false})
+    //         axios.put(`/api/users/img/${winner_id}`).then(res => {
+    //             // UPDATES USER IMAGE
+    //         })
+    //     })
+    //     // TURN COMPLETE METHOD
+    //     // CONDITIONAL RENDER BELLOW IF ITS OPPONENTS TURN
+    // }
 
-    endGame = (winner_id) => {
-        axios.delete(`/api/games/end/${+this.props.match.prams.gameroom}/${winner_id}`).then(res => {
-        })
-        // MESSAGE OF GAME END
-        // SEND BACK TO HOME SCREEN
-    }
+    // endGame = (winner_id) => {
+    //     axios.delete(`/api/games/end/${+this.props.match.prams.gameroom}/${winner_id}`).then(res => {
+    //     })
+    //     // MESSAGE OF GAME END
+    //     // SEND BACK TO HOME SCREEN
+    // }
 
 
     render() {
