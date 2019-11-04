@@ -168,11 +168,6 @@ class Login extends Component {
           <div className="login-box">
             <div className="login">
               <div className="input-titles">Username</div>
-              <input
-                onChange={e => this.handleChange(e, "email")}
-                type="text"
-                placeholder="Email"
-              />
               <div>
                 <input
                   onChange={e => this.handleChange(e, "username")}
@@ -180,7 +175,7 @@ class Login extends Component {
                   placeholder="Username"
                 />
               </div>
-              <div className="input-titles">Set a password</div>
+              <div className="input-titles">Password</div>
               <div>
                 <input
                   onChange={e => this.handleChange(e, "password")}
@@ -188,18 +183,13 @@ class Login extends Component {
                   placeholder="Password"
                 />
               </div>
-              <input
-                onChange={e => this.handleChange(e, "password2")}
-                type="password"
-                placeholder="Repeat Password"
-              />
               <div>
                 <div className="log">
                   <button
                     className="nov"
                     onClick={() => this.toggleChange()}
                   >
-                    Back to Login
+                    Register
                   </button>
                   <button className="charley" onClick={() => this.login()}>
                     Login
@@ -223,7 +213,7 @@ class Login extends Component {
                 placeholder="Username"
                 />
             </div>
-            <div className="input-titles">Set a password</div>
+            <div className="input-titles">Set a Password</div>
             <div>
               <input
                 onChange={e => this.handleChange(e, "password")}
