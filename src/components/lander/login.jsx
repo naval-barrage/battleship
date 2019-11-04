@@ -84,21 +84,34 @@ class Login extends Component {
     }
   }
   // LOGIN
-  login = async ()=>{
-    const {username, password} = this.state
-    if(username === '' || password === ''){
-      return swal.fire({type:'error', text: 'please fill all input boxes'})
+  login = async () => {
+    const { username, password } = this.state;
+    if (username === "" || password === "") {
+      return swal.fire({ type: "error", text: "please fill all input boxes" });
     }
-    const res = await axios.post('/auth/login', {username, password})
-    if(res.data.user){
-      let user = {user: {user_id: res.data.user.user_id, username: res.data.user.username}, loggedIn: res.data.loggedIn}
-      this.props.updateUser(user)
-      
-      this.props.history.push('/home')
-      
-    }
+    const res = await axios.post("/auth/login", { username, password });
+    if (res.data.user) {
+      let user = {
+        user: {
+          user_id: res.data.user.user_id,
+          username: res.data.user.username
+        },
+        loggedIn: res.data.loggedIn
+      };
+      this.props.updateUser(user);
+
+      this.props.history.push("/home");
+    } else  {
+          swal.fire({
+            type: "error",
+            text: "Wrong Password or                                                                                           Wrong Username",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+    // if(password !== password) return swal.fire({ type: "error", text: "incorrect password" });
     // swal.fire(res.data.message)
-  }
+  };
 
   // login = async () => {
   //   const { username, password } = this.state;
@@ -131,42 +144,88 @@ class Login extends Component {
   // };
   render() {
     return (
-      <div className='lander-container'>
+      <div className="lander-container">
         <h1 className="title">NAVAL BARRAGE</h1>
         <div className="banner">
-        <h5>THE CLASSIC NAVAL WARFARE GAME</h5>
+          <h5>THE CLASSIC NAVAL WARFARE GAME</h5>
         </div>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
-      <div className="landing-box">
-        {!this.state.register ? (
-          <div className="login-box">
-            <div className="login">
-              <div className="input-titles">Username</div>
+        <div className="landing-box">
+          {!this.state.register ? (
+            <div className="login-box">
+              <div className="login">
+                <div className="input-titles">Username</div>
+                <input
+                  onChange={e => this.handleChange(e, "username")}
+                  type="text"
+                  placeholder="Username"
+                />
+                <div className="input-titles">Your Password</div>
+                <input
+                  onChange={e => this.handleChange(e, "password")}
+                  type="password"
+                  placeholder="Password"
+                />
+                <div>
+                  <div className="log">
+                    <button
+                      className="regbutton"
+                      onClick={() => this.toggleChange()}
+                    >
+                      Register
+                    </button>
+                    <button className="enter" onClick={() => this.login()}>
+                      Login
+                    </button>
+                    <Link to="/howto">
+                      <button className="aboutbutton">How to play</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="login-box">
+              <div className="input-titles">Create a Username</div>
               <input
-                onChange={e => this.handleChange(e, "username")}
+                onChange={e => this.handleChange(e, "email")}
                 type="text"
-                placeholder="Username"
+                placeholder="Email"
+              />
+              <div>
+                <input
+                  onChange={e => this.handleChange(e, "username")}
+                  type="text"
+                  placeholder="Username"
                 />
-              <div className="input-titles">Your Password</div>
+              </div>
+              <div className="input-titles">Set a password</div>
+              <div>
+                <input
+                  onChange={e => this.handleChange(e, "password")}
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
               <input
-                onChange={e => this.handleChange(e, "password")}
+                onChange={e => this.handleChange(e, "password2")}
                 type="password"
-                placeholder="Password"
-                />
+                placeholder="Repeat Password"
+              />
               <div>
                 <div className="log">
                   <button
                     className="regbutton"
                     onClick={() => this.toggleChange()}
-                    >
-                    Register
+                  >
+                    Back to Login
                   </button>
-                  <button className="enter" onClick={() => this.login()}>
-                    Login
+                  <button className="enter" onClick={() => this.register()}>
+                    Register
                   </button>
                   <Link to="/howto">
                     <button className="aboutbutton">How to play</button>
@@ -174,55 +233,9 @@ class Login extends Component {
                 </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="login-box">
-            <div className="input-titles">Create a Username</div>
-            <input
-              onChange={e => this.handleChange(e, "email")}
-              type="text"
-              placeholder="Email"
-            />
-            <div>
-              <input
-                onChange={e => this.handleChange(e, "username")}
-                type="text"
-                placeholder="Username"
-                />
-            </div>
-            <div className="input-titles">Set a password</div>
-            <div>
-              <input
-                onChange={e => this.handleChange(e, "password")}
-                type="password"
-                placeholder="Password"
-                />
-            </div>
-            <input
-              onChange={e => this.handleChange(e, "password2")}
-              type="password"
-              placeholder="Repeat Password"
-              />
-            <div>
-              <div className="log">
-                <button
-                  className="regbutton"
-                  onClick={() => this.toggleChange()}
-                  >
-                  Back to Login
-                </button>
-                <button className="enter" onClick={() => this.register()}>
-                  Register
-                </button>
-                <Link to="/howto">
-                  <button className="aboutbutton">How to play</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-</div>
     );
   }
 }
