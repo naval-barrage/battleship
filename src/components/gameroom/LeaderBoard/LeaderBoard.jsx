@@ -35,12 +35,11 @@ class LeaderBoard extends Component {
             }
         }
         if (this.props.gameStats !== prevProps.gameStats) {
-            console.log('test')
             if (this.props.gameStats.host_id === this.props.user.user.user_id) {
                 this.setState({
                     myHits: this.props.gameStats.host_hits,
                     enemyHits: this.props.gameStats.guest_hits,
-                    myMisses: this.props.gameStats.host_hits,
+                    myMisses: this.props.gameStats.host_misses,
                     enemyMisses: this.props.gameStats.guest_misses,
                     myShipsSunk: this.props.gameStats.host_ships_sunk,
                     enemyShipsSunk: this.props.gameStats.guest_ships_sunk,

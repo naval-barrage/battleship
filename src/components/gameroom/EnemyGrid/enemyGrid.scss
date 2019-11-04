@@ -41,7 +41,7 @@
   grid-gap: 10px;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
 }
 #empty{
   background:blue

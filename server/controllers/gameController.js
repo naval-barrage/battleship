@@ -131,17 +131,7 @@ module.exports = {
             }
             console.log([host_hits, host_misses, host_ships_sunk])
             const host_update = await db.update_gameroom_host_turn([gameroom[0].guest_id, host_hits, host_misses, host_ships_sunk, gameroom_id])
-            // UPDATE HOST BOARD AND SEND
-            // Game.updateOne({"__id": gameroom[0].game_id, $set: {
-            //     "host": grid
-            // }
-            // }).exec((err, data) => {
-            //     if (err) {
-            //         console.log(err)
-            //     } else {
-            //         res.send(data)
-            //     }
-            // })
+
             Game.findByIdAndUpdate(gameroom[0].game_id, {"guest": grid}, function (err, game) {
                 if (err) {
                     console.log(err)
