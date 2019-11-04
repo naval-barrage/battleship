@@ -1,4 +1,10 @@
 @import '../../../variables.scss';
+@mixin buttons() {
+  background-size: cover;
+  color: white;
+  border-color: black;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
 .ListOfActive {
     img {
@@ -22,7 +28,13 @@
   height: 275px;
 }
 
-
+.uturn {
+  background-image: url('../../assets/Flags/golf.png');
+  background-size: cover;
+  color: white;
+  border-color: black;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
 
 
