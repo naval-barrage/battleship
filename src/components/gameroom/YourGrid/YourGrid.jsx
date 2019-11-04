@@ -17,6 +17,37 @@ export default class YourGrid extends Component {
       grid: []
     };
   }
+   pewPew =()=>{
+
+  }
+  // onYeet = (e, i1, i2)=>{
+  //   console.log(e);
+  //   console.log(i1);
+  //   console.log(i2);
+    
+    
+  //   if(e === 1 || e === 2 || e === 3 || e === 4 || e === 5 ){
+  //      let newGrid1 = this.state.grid
+  //      newGrid1[i1][i2] =7
+  //      this.setState({
+  //        grid: newGrid1
+  //      })
+  //    }
+  //    else {
+  //      console.log('test');
+  //      let newGrid = this.state.grid
+  //      newGrid[i1][i2] = 6
+  //     this.setState({
+  //       grid: newGrid
+  //     }) 
+  //     console.log(this.state);
+      
+       
+      
+  //   }
+     
+
+  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.grid !== prevProps.grid) {
@@ -25,35 +56,35 @@ export default class YourGrid extends Component {
 }
 
   render() {
-    const mappedGrid = this.state.grid.map(element => {
-      return element.map(element2 => {
+    const mappedGrid = this.state.grid.map((element, i1) => {
+      return element.map((element2, i2) => {
         switch (element2) {
           case 0:
-            return <div id="empty" className="yeet"></div>;
+            return <div  id="empty" className="yeet"></div>;
 
           case 1:
-            return <div id="sub" className="yeet"></div>;
+            return <div  id="sub" className="yeet"></div>;
 
           case 2:
-            return <div id="destroyer" className="yeet"></div>;
+            return <div  id="destroyer" className="yeet"></div>;
 
           case 3:
-            return <div id="cruiser" className="yeet"></div>;
+            return <div  id="cruiser" className="yeet"></div>;
 
           case 4:
-            return <div id="battleship" className="yeet"></div>;
+            return <div  id="battleship" className="yeet"></div>;
 
           case 5:
-            return <div id="carrier" className="yeet"></div>;
+            return <div  id="carrier" className="yeet"></div>;
 
           case 6:
-            return <div id="hit" className="yeet"></div>;
+            return <div  id="hit" className="yeet"></div>;
 
           case 7:
-            return <div id="miss" classname="yeet"></div>;
+            return <div  id="miss" classname="yeet"></div>;
 
           default:
-            return <div className="yeet"></div>;
+            return <div  className="yeet"></div>;
         }
       });
     });

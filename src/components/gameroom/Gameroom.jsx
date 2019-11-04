@@ -99,9 +99,11 @@ class Gameroom extends Component {
         <div>
                 <Nav/>
             <div className='Gameroom'>
+
                 <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid}/>
                 <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
+>>>>>>> origin
                 <Ships/>
         </div>
     </div>

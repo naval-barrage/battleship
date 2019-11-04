@@ -41,11 +41,10 @@ class ActiveGames extends Component {
                         return (
                             <div className='results-active'>
                                 <div className="ListOfActive">
-                                    {/* {console.log(activeGames)} */}
                                     <img src={activeGames.friend_info[0].img} alt='Boat to show ranking'/>
                                     {`Game with ${activeGames.friend_info[0].username} `}
                                 {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
-                                    <button onClick={() => this.goToGame(activeGames.game_info.gameroom_id)}>Its your turn!!!!</button>
+                                    <button className='uturn' onClick={() => this.goToGame(activeGames.game_info.gameroom_id)}>Its your turn!!!!</button>
                                     ) : (
                                         <div class="razar">
                                         <div class="ringbase ring1"></div>

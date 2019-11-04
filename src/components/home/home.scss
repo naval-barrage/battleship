@@ -21,11 +21,25 @@
     background-image: url('./../assets/Flags/yankee.png');
     background-size: cover;
     color: black;
-    border-color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    border-color: black;
+    height: auto;
+    width: 90px;
 }
 .outer {
     background-image: url('../assets/Flags/howtopic.png');
     height: auto;
     width: 200px;
+}
+.howto {
+    background-image: url('../assets/Flags/howtopic.png');
+    background-size: cover;
+    margin: 9% 0 0 12%;
+    width: 60%;
+    height: auto;
+    padding: 100px;
+    box-sizing: border-box;
+    border: 1px solid black;
 }
