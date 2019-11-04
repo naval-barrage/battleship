@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 import './enemyGrid.scss'
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class EmyGrid extends Component {
+class EnemyGrid extends Component {
     constructor() {
         super()
         this.state = {
@@ -14,13 +17,30 @@ export default class EmyGrid extends Component {
             // 6 = miss
             // 7 = hit
             
-            enemyGrid : []
+            enemyGrid : [],
+            ship_sunk: false
         }
     }
 
     componentDidMount() {
-        console.log(this.props.grid)
+        console.log(this.props)
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.grid !== prevProps.grid) {
+            this.setState({enemyGrid: this.props.grid})
+        }
+    }
+
+    // This is the function that will be called after the move is made.
+    // If there was a hit pass in the string 'hit' as well as 'miss' if the turn result is a miss
+
+    updateGame = (turn_result) => {
+        axios.put(`/api/game/${+this.props.match.params.gameroom}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, this.state.enemyGrid).then(res => {
+            
+        })
+    }
+
     render() {
         return(
             <div className='EmyGrid'>
@@ -29,3 +49,10 @@ export default class EmyGrid extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { user, loggedIn } = state;
+    return { user, loggedIn };
+}
+
+export default connect(mapStateToProps)(withRouter(EnemyGrid));

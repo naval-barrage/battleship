@@ -14,20 +14,15 @@ export default class YourGrid extends Component {
       // 6 = miss
       // 7 = hit
 
-      grid: [
-        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
-        [0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 7, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 3, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 3, 0, 0, 0, 0, 0, 6, 0],
-        [0, 0, 3, 0, 0, 7, 0, 0, 6, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 6, 0],
-        [5, 5, 5, 5, 5, 0, 0, 0, 6, 0]
-      ]
+      grid: []
     };
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.grid !== prevProps.grid) {
+        this.setState({grid: this.props.grid})
+    }
+}
 
   render() {
     const mappedGrid = this.state.grid.map(element => {
