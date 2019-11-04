@@ -124,7 +124,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="hit"
+                id="miss"
                 className="yeet"
             ></div>
             );
@@ -133,7 +133,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="miss"
+                id="hit"
                 classname="yeet"
             ></div>
             );
