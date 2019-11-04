@@ -122,26 +122,35 @@ class Login extends Component {
   //     }
   //   } catch (error) {
   //     swal.fire({
-  //       type: "error",
-  //       text: "Wrong password or wrong email",
-  //       showConfirmButton: false,
+    //       type: "error",
+    //       text: "Wrong password or wrong email",
+    //       showConfirmButton: false,
   //       timer: 1500
   //     });
   //   }
   // };
   render() {
     return (
-      <div className='lander-container'>
+      <div className='backImg'>
+      <div  className='lander-container'>
         <h1 className="title">NAVAL BARRAGE</h1>
         <div className="banner">
+          <div className="right"></div>
         <h5>THE CLASSIC NAVAL WARFARE GAME</h5>
+          <div className="left"></div>
         </div>
+        <div className="star">
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
+        </div>
+      </div>
       <div className="landing-box">
+      <div className="gameplay">
+        About page here / how to play
+      </div>
         {!this.state.register ? (
           <div className="login-box">
             <div className="login">
