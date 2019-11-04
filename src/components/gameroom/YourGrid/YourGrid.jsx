@@ -42,10 +42,10 @@ export default class YourGrid extends Component {
   //     }) 
   //     console.log(this.state);
       
-       
+
       
   //   }
-     
+
 
   // }
 
@@ -78,10 +78,10 @@ export default class YourGrid extends Component {
             return <div  id="carrier" className="yeet"></div>;
 
           case 6:
-            return <div  id="hit" className="yeet"></div>;
+            return <div  id="miss" className="yeet"></div>;
 
           case 7:
-            return <div  id="miss" classname="yeet"></div>;
+            return <div  id="hit" classname="yeet"></div>;
 
           default:
             return <div  className="yeet"></div>;

@@ -98,14 +98,22 @@ class Gameroom extends Component {
         return(
         <div>
                 <Nav/>
+                {this.state.yourTurn ? 
             <div className='Gameroom'>
 
-                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid}/>
+                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
                 <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
->>>>>>> origin
                 <Ships/>
-        </div>
+        </div> 
+        : 
+        <div className='Gameroom gameroom-blurred'>
+            <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
+            <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
+            <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
+            <Ships/>
+        </div>}
+
     </div>
         )
     }
