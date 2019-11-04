@@ -11,6 +11,6 @@ export default (
         <Route exact path='/' component={Lander}/>
         <Route path='/howto' component={HowTo}/>
         <Route path='/home' component={Home}/>
-        <Route path='/gameroom' component={Gameroom}/>
+        <Route path='/gameroom/:gameroom_id' component={Gameroom}/>
     </Switch>
 )

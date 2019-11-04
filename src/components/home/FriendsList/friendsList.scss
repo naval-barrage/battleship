@@ -1,1 +1,42 @@
 @import '../../../variables.scss';
+@mixin buttons() {
+    background-size: cover;
+    color: white;
+    border-color: black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.FriendOnline {
+    // overflow: scroll;
+    img {
+        height: 30px;
+        width: 30px;
+        clip-path: circle(43%);
+        font-size: 7px;
+    }
+}
+.FriendsList {
+    margin: 4% 0 0 15%;
+    width: 70%;
+    height: auto;
+    padding: 10px;
+}
+.FriendsBox {
+    background: linear-gradient(50deg,  #2d4957, #288ebc);
+    height: 200px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+.listFriends {
+    overflow-y: scroll;
+    padding: 5px 15px;
+}
+.papa {
+    background-image: url('./../../assets/Flags/papa.jpg');
+    @include buttons();
+}
+.uniform {
+    background-image: url('./../../assets/Flags/uniform.jpg');
+    @include buttons();
+}

@@ -2,55 +2,50 @@ import React, { Component } from "react";
 import "./enemyGrid.scss";
 
 export default class EmyGrid extends Component {
-  constructor() {
-    super();
-    this.state = {
-      // 0 = empty
-      // 1 = submarine(3)
-      // 2 = destroyer(2)
-      // 3 = cruiser(3)
-      // 4 = battleship(4)
-      // 5 = carrier(5)
-      // 6 = miss
-      // 7 = hit
+    constructor() {
+        super()
+        this.state = {
+            // 0 = empty
+            // 1 = submarine(3)
+            // 2 = destroyer(2)
+            // 3 = cruiser(3)
+            // 4 = battleship(4)
+            // 5 = carrier(5)
+            // 6 = miss
+            // 7 = hit
+            
+            enemyGrid : []
+        }
+    }
 
-      grid: [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      ]
-    };
-  }
+    componentDidMount() {
+        console.log(this.props.grid)
+    }
+
+  
   onYeet = (e, i1, i2) => {
     console.log(e);
     console.log(i1);
     console.log(i2);
 
     if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
-      let newGrid1 = this.state.grid;
+      let newGrid1 = this.state.enemygrid;
       newGrid1[i1][i2] = 7;
       this.setState({
-        grid: newGrid1
+        enemygrid: newGrid1
       });
     } else {
       console.log("test");
-      let newGrid = this.state.grid;
+      let newGrid = this.state.enemygrid;
       newGrid[i1][i2] = 6;
       this.setState({
-        grid: newGrid
+        enemygrid: newGrid
       });
       console.log(this.state);
     }
   };
   render() {
-    const mappedGrid = this.state.grid.map((element, i1) => {
+    const mappedGrid = this.state.enemygrid.map((element, i1) => {
       return element.map((element2, i2) => {
         switch (element2) {
           case 0:
@@ -141,6 +136,7 @@ export default class EmyGrid extends Component {
         <div onClick={this.nice} className="container">
           {mappedGrid}
           {/* {mappedyeezy} */}
+
         </div>
         <div></div>
       </div>

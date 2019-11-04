@@ -1,8 +1,11 @@
+import swal from 'sweetalert2'
 import React, {Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import './activeGames.scss'
 import axios from 'axios'
+import { connect } from "react-redux";
 
-export default class ActiveGames extends Component {
+class ActiveGames extends Component {
     constructor() {
         super()
         this.state = {
@@ -16,24 +19,61 @@ export default class ActiveGames extends Component {
             })
         })
     }
+    goToGame(gameroom_id) {
+        console.log(gameroom_id)
+        axios.get(`/api/game/${gameroom_id}`).then(res => {
+            swal.fire({type: 'success' , text: 'Game On!' , showConfirmButton: false, timer: 1000})
+            this.props.history.push(`/gameroom/${gameroom_id}`)
+        })
+    }
     render() {
-        console.log(this.state.activeGames)
         return(
             <div className='ActiveGames'>
-                    {
-                    this.state.activeGames.length ? 0 (
-                        this.state.activeGames.map(activeGames => {
-                            return (
-                                <div className='List-of-friends'>
-                        <div className="FriendOnline">
-                            {`${this.state.activeGames}`}
-                        </div>
-                    </div>
-                    )
-                })
-                ) : null
-            }
+                <div>Active Games list:</div>
+                <div className='active'>
+                    {this.state.activeGames.length < 1 ? (
+                        <div>no active games</div>
+                        ) : (
+                <div>
+                {
+                    this.state.activeGames.length ? (
+                    this.state.activeGames.map((activeGames, i) => {
+                        return (
+                            <div className='results-active'>
+                                <div className="ListOfActive">
+                                    {/* {console.log(activeGames)} */}
+                                    <img src={activeGames.friend_info[0].img} alt='Boat to show ranking'/>
+                                    {`Game with ${activeGames.friend_info[0].username} `}
+                                {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
+                                    <button onClick={() => this.goToGame(activeGames.game_info.gameroom_id)}>Its your turn!!!!</button>
+                                    ) : (
+                                        <div class="razar">
+                                        <div class="ringbase ring1"></div>
+                                        <div class="ringbase ring2"></div>
+                                        <div class="pulse"></div>
+                                        <div class="pointer">
+                                        <div></div>
+                                        </div>
+                                        <div class="dot pos1"></div>
+                                        <div class="dot pos2"></div>
+                                    </div>
+                                )}
+                                </div>
+                            </div>
+                        )
+                    })
+                    ) : null
+                }
+            </div>
+            )}
+            </div>
         </div>
         )
     }
 }
+function mapStateToProps(state) {
+    const { user, loggedIn } = state;
+    return { user, loggedIn };
+}
+
+export default connect(mapStateToProps)(withRouter(ActiveGames));

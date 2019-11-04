@@ -13,6 +13,7 @@ export default class Home extends Component {
 
         }
     }
+
     render() {
         return(
         <div>
@@ -21,7 +22,7 @@ export default class Home extends Component {
                 <Friends/>
                 <Search/>
                 <Active/>
-                <Link to='/howto'><button className='enter'><i class="fas fa-question"></i></button></Link>
+                <Link to='/howto'><button className='yankee'>How To Play<i class="fas fa-question"></i></button></Link>
         </div>
     </div>
         )

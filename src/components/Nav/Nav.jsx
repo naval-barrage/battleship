@@ -14,6 +14,15 @@ class Nav extends Component {
 
         }
     }
+    componentDidMount() {
+        axios.get('/auth/user').then(res => {
+            if (res.data.user) {
+                let user = {user: {user_id: res.data.user.user_id, username: res.data.user.username},
+            loggedIn: res.data.loggedIn}
+            this.props.updateUser(user)
+            }
+        })
+    }
     logout = async () => {
         const res = await axios.delete('/auth/logout')
         let user = {user: null, loggedIn: false}
@@ -35,7 +44,7 @@ class Nav extends Component {
         return(
         <div className='Nav'>
             <Link to='/home'><button className='enter'><i class="fas fa-anchor"></i>Home</button></Link>
-            <Link to='/gameroom'><button className='enter'><i class="fas fa-ship"></i>Gameroom</button></Link>
+            {/* <Link to='/gameroom'><button className='enter'><i class="fas fa-ship"></i>Gameroom</button></Link> */}
             <button onClick={() => this.logout()} className='logout-button'><i class="fas fa-sign-out-alt"></i>Logout</button>
         </div>
         )

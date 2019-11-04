@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import './friendsList.scss'
 import axios from 'axios'
-// import swal from 'sweetalert2'
+import { connect } from "react-redux";
+import swal from 'sweetalert2'
+import {withRouter} from 'react-router-dom'
 
-export default class FriendsList extends Component {
+class FriendsList extends Component {
     constructor() {
         super()
         this.state = {
@@ -17,32 +19,49 @@ export default class FriendsList extends Component {
             })
         })
     }
-    handleStartGame() {
-        
+    handleStartGame(guest_id) {
+        axios.post(`/api/games/new/${+guest_id}`).then(res => {
+            swal.fire({type: 'success' , text: 'Game Started' , showConfirmButton: false, timer: 1000})
+            this.props.history.push("/gameroom")
+        })
     }
-    
     render() {
         return(
             <div className='FriendsList'>
+                <div className="FriendsBox">
+                Your Friends:
+                <div className="listFriends">
                 {
                     this.state.friendsList.length ? (
                         this.state.friendsList.map((friendsList, i) => {
                             return (
                                 <div className='List-of-friends'>
                         <div className="FriendOnline">
+                            {/* {console.log(this.state.friendsList)} */}
+                            <img src={this.state.friendsList[i].friend_info[0].img} alt="A boat to show ranking"/>
                             {`${this.state.friendsList[i].friend_info[0].username}`}
+                            {` Wins: ${this.state.friendsList[i].friendship_info.friend1_wins} loses: ${this.state.friendsList[i].friendship_info.friend2_wins}`}
                             {!this.state.friendsList[i].friendship_info.game_active ? (
-                                <button onClick={() => this.handleStartGame(friendsList.user_id)}>Start Game</button>
+                                <button className='papa' onClick={() => this.handleStartGame(friendsList.friend_info[0].user_id)}>
+                                Start Game</button>
                             ) : ( 
-                                <button>Game Active</button>
-                            )}
+                                <button className='uniform'>Game Active</button>
+                                )}
                         </div>
                     </div>
                     )
                 })
                 ) : null
             }
+            </div>
+            </div>
         </div>
         )
     }
 }
+function mapStateToProps(state) {
+    const { user, loggedIn } = state;
+    return { user, loggedIn };
+}
+
+export default connect(mapStateToProps)(withRouter(FriendsList));
