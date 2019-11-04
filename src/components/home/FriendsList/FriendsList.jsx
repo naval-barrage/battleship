@@ -22,7 +22,8 @@ class FriendsList extends Component {
     handleStartGame(guest_id) {
         axios.post(`/api/games/new/${+guest_id}`).then(res => {
             swal.fire({type: 'success' , text: 'Game Started' , showConfirmButton: false, timer: 1000})
-            this.props.history.push("/gameroom")
+            // console.log(res.data.gameroom_id)
+            this.props.history.push(`/gameroom/${res.data.gameroom_id}`)
         })
     }
     render() {
