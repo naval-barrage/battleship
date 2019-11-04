@@ -41,7 +41,6 @@ class ActiveGames extends Component {
                         return (
                             <div className='results-active'>
                                 <div className="ListOfActive">
-                                    {/* {console.log(activeGames)} */}
                                     <img src={activeGames.friend_info[0].img} alt='Boat to show ranking'/>
                                     {`Game with ${activeGames.friend_info[0].username} `}
                                 {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
