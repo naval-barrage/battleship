@@ -7,3 +7,63 @@
 //     display: inline-block;
 //     margin-right: 2px;
 //   }
+.yeet:hover{cursor:pointer;}
+.yeet  {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  column-gap: 10px;
+
+  row-gap: 10px;
+
+  justify-content: center;
+
+  // width: 100px;
+
+  // margin: auto auto;
+}
+.container {
+  height: 70vh;
+  // display: inline-grid ;
+  // width: 40vw;
+
+  // grid-template-rows: auto auto auto;
+
+  // grid-template-columns: auto auto auto;
+  // background-color: #2196F3;
+  padding: 20px;
+  // color:red
+  width: 600px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-auto-flow: column;
+}
+#empty{
+  background:blue
+}
+#sub{
+  background: green;
+}
+#destroyer{
+  background:orange
+}
+#cruiser{
+  background:yellow
+}
+#battleship{
+  background:palevioletred
+}
+#carrier{
+  background:whitesmoke
+}
+#hit{
+  background:rgb(201, 14, 14)
+}
+#miss{
+  background: black
+}

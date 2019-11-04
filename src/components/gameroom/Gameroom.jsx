@@ -18,10 +18,10 @@ export default class Gameroom extends Component {
         <div>
                 <Nav/>
             <div className='Gameroom'>
-                <Ships/>
+                <EmyGrid/>
                 <YourGrid/>
                 <LeaderBoard/>
-                <EmyGrid/>
+                <Ships/>
         </div>
     </div>
         )
