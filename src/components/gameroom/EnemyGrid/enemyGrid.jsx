@@ -1,7 +1,10 @@
-import React, { Component } from "react";
-import "./enemyGrid.scss";
+import React, {Component} from 'react'
+import './enemyGrid.scss'
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class EmyGrid extends Component {
+class EnemyGrid extends Component {
     constructor() {
         super()
         this.state = {
@@ -14,14 +17,29 @@ export default class EmyGrid extends Component {
             // 6 = miss
             // 7 = hit
             
-            enemyGrid : []
+            enemyGrid : [],
+            ship_sunk: false
         }
     }
 
     componentDidMount() {
-        console.log(this.props.grid)
+        console.log(this.props)
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.grid !== prevProps.grid) {
+            this.setState({enemyGrid: this.props.grid})
+        }
+    }
+
+    // This is the function that will be called after the move is made.
+    // If there was a hit pass in the string 'hit' as well as 'miss' if the turn result is a miss
+
+    updateGame = (turn_result) => {
+        axios.put(`/api/game/${+this.props.match.params.gameroom}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, this.state.enemyGrid).then(res => {
+            
+        })
+    }
   
   onYeet = (e, i1, i2) => {
     console.log(e);
@@ -29,23 +47,23 @@ export default class EmyGrid extends Component {
     console.log(i2);
 
     if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
-      let newGrid1 = this.state.enemygrid;
+      let newGrid1 = this.state.enemyGrid;
       newGrid1[i1][i2] = 7;
       this.setState({
-        enemygrid: newGrid1
+        enemyGrid: newGrid1
       });
     } else {
       console.log("test");
-      let newGrid = this.state.enemygrid;
+      let newGrid = this.state.enemyGrid;
       newGrid[i1][i2] = 6;
       this.setState({
-        enemygrid: newGrid
+        enemyGrid: newGrid
       });
       console.log(this.state);
     }
   };
   render() {
-    const mappedGrid = this.state.enemygrid.map((element, i1) => {
+    const mappedGrid = this.state.enemyGrid.map((element, i1) => {
       return element.map((element2, i2) => {
         switch (element2) {
           case 0:
@@ -143,3 +161,10 @@ export default class EmyGrid extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+    const { user, loggedIn } = state;
+    return { user, loggedIn };
+}
+
+export default connect(mapStateToProps)(withRouter(EnemyGrid));

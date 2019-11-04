@@ -14,18 +14,7 @@ export default class YourGrid extends Component {
       // 6 = miss
       // 7 = hit
 
-      grid: [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      ]
+      grid: []
     };
   }
    pewPew =()=>{
@@ -59,6 +48,12 @@ export default class YourGrid extends Component {
      
 
   // }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.grid !== prevProps.grid) {
+        this.setState({grid: this.props.grid})
+    }
+}
 
   render() {
     const mappedGrid = this.state.grid.map((element, i1) => {
