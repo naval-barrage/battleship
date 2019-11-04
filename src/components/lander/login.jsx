@@ -149,7 +149,7 @@ class Login extends Component {
       </div>
       <div className="landing-box">
       <div className="gameplay">
-        About page here / how to play
+        <Link to='/howto'><div className='howto-lander'><button className='yankee-lander'>How To Play<i class="fas fa-question"></i></button></div></Link>
       </div>
         {!this.state.register ? (
           <div className="login-box">
@@ -169,17 +169,14 @@ class Login extends Component {
               <div>
                 <div className="log">
                   <button
-                    className="regbutton"
+                    className="nov"
                     onClick={() => this.toggleChange()}
                     >
                     Register
                   </button>
-                  <button className="enter" onClick={() => this.login()}>
+                  <button className="charley" onClick={() => this.login()}>
                     Login
                   </button>
-                  <Link to="/howto">
-                    <button className="aboutbutton">How to play</button>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -215,17 +212,14 @@ class Login extends Component {
             <div>
               <div className="log">
                 <button
-                  className="regbutton"
+                  className="nov"
                   onClick={() => this.toggleChange()}
                   >
                   Back to Login
                 </button>
-                <button className="enter" onClick={() => this.register()}>
+                <button className="charley" onClick={() => this.register()}>
                   Register
                 </button>
-                <Link to="/howto">
-                  <button className="aboutbutton">How to play</button>
-                </Link>
               </div>
             </div>
           </div>
