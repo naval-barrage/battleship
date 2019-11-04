@@ -28,7 +28,9 @@ class FriendsList extends Component {
     render() {
         return(
             <div className='FriendsList'>
+                <div className="FriendsBox">
                 Your Friends:
+                <div className="listFriends">
                 {
                     this.state.friendsList.length ? (
                         this.state.friendsList.map((friendsList, i) => {
@@ -40,17 +42,19 @@ class FriendsList extends Component {
                             {`${this.state.friendsList[i].friend_info[0].username}`}
                             {` Wins: ${this.state.friendsList[i].friendship_info.friend1_wins} loses: ${this.state.friendsList[i].friendship_info.friend2_wins}`}
                             {!this.state.friendsList[i].friendship_info.game_active ? (
-                                <button onClick={() => this.handleStartGame(friendsList.friend_info[0].user_id)}>
+                                <button className='papa' onClick={() => this.handleStartGame(friendsList.friend_info[0].user_id)}>
                                 Start Game</button>
                             ) : ( 
-                                <button>Game Active</button>
-                            )}
+                                <button className='uniform'>Game Active</button>
+                                )}
                         </div>
                     </div>
                     )
                 })
                 ) : null
             }
+            </div>
+            </div>
         </div>
         )
     }

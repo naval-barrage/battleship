@@ -30,9 +30,10 @@ class ActiveGames extends Component {
         return(
             <div className='ActiveGames'>
                 <div>Active Games list:</div>
+                <div className='active'>
                     {this.state.activeGames.length < 1 ? (
                         <div>no active games</div>
-                    ) : (
+                        ) : (
                 <div>
                 {
                     this.state.activeGames.length ? (
@@ -46,7 +47,7 @@ class ActiveGames extends Component {
                                 {activeGames.game_info.turn !== activeGames.friend_info[0].user_id ? (
                                     <button onClick={() => this.goToGame(activeGames.game_info.gameroom_id)}>Its your turn!!!!</button>
                                     ) : (
-                                    <div class="razar">
+                                        <div class="razar">
                                         <div class="ringbase ring1"></div>
                                         <div class="ringbase ring2"></div>
                                         <div class="pulse"></div>
@@ -60,11 +61,12 @@ class ActiveGames extends Component {
                                 </div>
                             </div>
                         )
-                })
-                ) : null
-            }
+                    })
+                    ) : null
+                }
             </div>
             )}
+            </div>
         </div>
         )
     }
