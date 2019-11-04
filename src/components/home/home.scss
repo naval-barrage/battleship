@@ -1,4 +1,10 @@
 @import '../../variables.scss';
+@mixin buttons() {
+    background-size: cover;
+    color: white;
+    border-color: black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
 .Home {
     display: grid;
@@ -10,4 +16,16 @@
     width: 100%;
     background-image: url('../assets//home.jpg');
     background-size: cover;
+}
+.yankee {
+    background-image: url('./../assets/Flags/yankee.png');
+    background-size: cover;
+    color: black;
+    border-color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+.outer {
+    background-image: url('../assets/Flags/howtopic.png');
+    height: auto;
+    width: 200px;
 }

@@ -8,8 +8,19 @@
         font-size: 7px;
     }
 }
-
-
+.ActiveGames {
+  height: 300px;
+  width: 400px;
+  background: linear-gradient(50deg,  #2d4957, #288ebc);
+  margin: 4% 0 0 16.5%;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+.active {
+  overflow-y: scroll;
+  padding: 5px 15px;
+  height: 275px;
+}
 
 
 

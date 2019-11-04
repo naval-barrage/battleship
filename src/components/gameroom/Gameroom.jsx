@@ -96,10 +96,10 @@ class Gameroom extends Component {
         <div>
                 <Nav/>
             <div className='Gameroom'>
-                <Ships/>
+                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid}/>
                 <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid}/>
+                <Ships/>
         </div>
     </div>
         )
