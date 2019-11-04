@@ -135,67 +135,39 @@ class Login extends Component {
   //     }
   //   } catch (error) {
   //     swal.fire({
-  //       type: "error",
-  //       text: "Wrong password or wrong email",
-  //       showConfirmButton: false,
+    //       type: "error",
+    //       text: "Wrong password or wrong email",
+    //       showConfirmButton: false,
   //       timer: 1500
   //     });
   //   }
   // };
   render() {
     return (
-      <div className="lander-container">
+      <div className='backImg'>
+      <div  className='lander-container'>
         <h1 className="title">NAVAL BARRAGE</h1>
         <div className="banner">
-          <h5>THE CLASSIC NAVAL WARFARE GAME</h5>
+          <div className="right"></div>
+        <h5>THE CLASSIC NAVAL WARFARE GAME</h5>
+          <div className="left"></div>
         </div>
+        <div className="star">
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
-        <div className="landing-box">
-          {!this.state.register ? (
-            <div className="login-box">
-              <div className="login">
-                <div className="input-titles">Username</div>
-                <input
-                  onChange={e => this.handleChange(e, "username")}
-                  type="text"
-                  placeholder="Username"
-                />
-                <div className="input-titles">Your Password</div>
-                <input
-                  onChange={e => this.handleChange(e, "password")}
-                  type="password"
-                  placeholder="Password"
-                />
-                <div>
-                  <div className="log">
-                    <button
-                      className="regbutton"
-                      onClick={() => this.toggleChange()}
-                    >
-                      Register
-                    </button>
-                    <button className="enter" onClick={() => this.login()}>
-                      Login
-                    </button>
-                    <Link to="/howto">
-                      <button className="aboutbutton">How to play</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="login-box">
-              <div className="input-titles">Create a Username</div>
-              <input
-                onChange={e => this.handleChange(e, "email")}
-                type="text"
-                placeholder="Email"
-              />
+        </div>
+      </div>
+      <div className="landing-box">
+      <div className="gameplay">
+        <Link to='/howto'><div className='howto-lander'><button className='yankee-lander'>How To Play<i class="fas fa-question"></i></button></div></Link>
+      </div>
+        {!this.state.register ? (
+          <div className="login-box">
+            <div className="login">
+              <div className="input-titles">Username</div>
               <div>
                 <input
                   onChange={e => this.handleChange(e, "username")}
@@ -203,7 +175,7 @@ class Login extends Component {
                   placeholder="Username"
                 />
               </div>
-              <div className="input-titles">Set a password</div>
+              <div className="input-titles">Password</div>
               <div>
                 <input
                   onChange={e => this.handleChange(e, "password")}
@@ -211,30 +183,65 @@ class Login extends Component {
                   placeholder="Password"
                 />
               </div>
-              <input
-                onChange={e => this.handleChange(e, "password2")}
-                type="password"
-                placeholder="Repeat Password"
-              />
               <div>
                 <div className="log">
                   <button
-                    className="regbutton"
+                    className="nov"
                     onClick={() => this.toggleChange()}
                   >
-                    Back to Login
-                  </button>
-                  <button className="enter" onClick={() => this.register()}>
                     Register
                   </button>
-                  <Link to="/howto">
-                    <button className="aboutbutton">How to play</button>
-                  </Link>
+                  <button className="charley" onClick={() => this.login()}>
+                    Login
+                  </button>
                 </div>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="login-box">
+            <div className="input-titles">Create a Username</div>
+            <input
+              onChange={e => this.handleChange(e, "email")}
+              type="text"
+              placeholder="Email"
+            />
+            <div>
+              <input
+                onChange={e => this.handleChange(e, "username")}
+                type="text"
+                placeholder="Username"
+                />
+            </div>
+            <div className="input-titles">Set a Password</div>
+            <div>
+              <input
+                onChange={e => this.handleChange(e, "password")}
+                type="password"
+                placeholder="Password"
+                />
+            </div>
+            <input
+              onChange={e => this.handleChange(e, "password2")}
+              type="password"
+              placeholder="Repeat Password"
+              />
+            <div>
+              <div className="log">
+                <button
+                  className="nov"
+                  onClick={() => this.toggleChange()}
+                  >
+                  Back to Login
+                </button>
+                <button className="charley" onClick={() => this.register()}>
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
       </div>
     );
   }
