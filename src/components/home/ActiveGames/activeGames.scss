@@ -4,9 +4,12 @@
   color: white;
   border-color: black;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .ListOfActive {
+  display: flex;
+  justify-content: space-between;
     img {
         height: 30px;
         width: 30px;
@@ -30,6 +33,9 @@
 
 .uturn {
   background-image: url('../../assets/Flags/golf.png');
+  // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  // font-size: 15px;
+  height: 20px;
   background-size: cover;
   color: white;
   border-color: black;
@@ -50,6 +56,7 @@
 
 
   .razar {
+    margin: 0 10%;
     float: right;
     position:relative;
     width:20px;

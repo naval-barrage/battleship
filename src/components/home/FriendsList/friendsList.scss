@@ -1,13 +1,14 @@
 @import '../../../variables.scss';
 @mixin buttons() {
     background-size: cover;
-    color: white;
     border-color: black;
+    color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .FriendOnline {
-    // overflow: scroll;
+    display: flex;
+    justify-content: space-between;
     img {
         height: 30px;
         width: 30px;
