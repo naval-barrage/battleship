@@ -19,7 +19,7 @@
 .FriendsList {
     margin: 4% 0 0 15%;
     width: 70%;
-    height: auto;
+    height: 200px;
     padding: 10px;
 }
 .FriendsBox {
@@ -31,7 +31,9 @@
 }
 .listFriends {
     overflow-y: scroll;
+    height: 150px;
     padding: 5px 15px;
+    margin: 10px 0;
 }
 .papa {
     background-image: url('./../../assets/Flags/papa.jpg');
