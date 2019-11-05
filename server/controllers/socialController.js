@@ -109,5 +109,12 @@ module.exports = {
                 break
         }
         res.status(200).send({message: {text: `${user[0].username} leveled up!`, type: 'success'}})
+    },
+
+    async getUser(req, res) {
+        const db = req.app.get('db')
+        const {user_id} = req.session.user
+        let user = await db.get_user(user_id)
+        res.status(200).send(user)
     }
 }
