@@ -41,20 +41,27 @@ class EnemyGrid extends Component {
     // If there was a hit pass in the string 'hit' as well as 'miss' if the turn result is a miss
 
     updateGame = (turn_result) => {
+        let ships = false
         for(let i = 0; i < this.state.enemyGrid.length; i++) {
             if (this.state.enemyGrid[i].includes(1) === true || this.state.enemyGrid[i].includes(2) === true || this.state.enemyGrid[i].includes(3) === true || this.state.enemyGrid[i].includes(4) === true || this.state.enemyGrid[i].includes(5) === true) {
-                axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
-                    this.setState({isTurn: false})
-                })
-                this.props.changeTurnFn()
-            break
-            } else {
-                axios.delete(`/api/games/end/${this.props.match.params.gameroom_id}/${this.props.user.user.user_id}`).then(res => {
-                    alert('you won!')
-                    this.props.history.push('/home')
-                })
+                ships = true
             }
         }
+        console.log(ships)
+        if (ships === true) {
+            this.props.changeTurnFn()
+            this.setState({isTurn: false})
+            axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
+            })
+        } else {
+            axios.delete(`/api/games/end/${this.props.match.params.gameroom_id}/${this.props.user.user.user_id}`).then(res => {
+            })
+            axios.put(`/api/users/img/${this.props.user.user.user_id}`).then(res => {
+            })
+            alert('you won!')
+            this.props.history.push('/home')
+            }
+        
 
         
     }

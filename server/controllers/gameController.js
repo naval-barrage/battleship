@@ -42,7 +42,7 @@ module.exports = {
 
         const gameroom = await db.get_gameroom(gameroom_id)
         const friendship = await db.check_friendship([gameroom[0].host_id, gameroom[0].guest_id])
-        if (friendship[0].friend1 === winner_id) {
+        if (+friendship[0].friend1 === +winner_id) {
             const friend1_updated = await db.update_friend1_wins([friendship[0].friendship_id, friendship[0].friend1_wins + 1])
         } else {
             const friend2_updated = await db.update_friend2_wins([friendship[0].friendship_id, friendship[0].friend2_wins + 1])

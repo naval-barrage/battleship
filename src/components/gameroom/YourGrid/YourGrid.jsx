@@ -19,7 +19,8 @@ class YourGrid extends Component {
 
       grid: [],
       ship: 'carrier',
-      horizontal: true
+      horizontal: true,
+      shipsPlaced: false
     };
   }
 
@@ -38,27 +39,18 @@ setShips(e, i1, i2) {
     switch(this.state.ship) {
     case('carrier'):
       this.setCarrier(e, i1, i2)
-      this.setState({ship: 'battleship'})
       break
     case('battleship'):
       this.setBattleship(e, i1, i2)
-      this.setState({ship: 'cruiser'})
       break
     case('cruiser'):
       this.setCruiser(e, i1, i2)
-      this.setState({ship: 'submarine'})
       break
     case('submarine'):
       this.setSubmarine(e, i1, i2)
-      this.setState({ship: 'destroyer'})
       break
     case('destroyer'):
       this.setDestroyer(e, i1, i2)
-      this.setState({ship: 'all ships placed'})
-      axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
-
-      })
-      this.props.changeTurnFn()
       break
     default:
       console.log('Something went wrong')
@@ -67,27 +59,38 @@ setShips(e, i1, i2) {
   }
 }
 
+sendData() {
+  if (this.state.shipsPlaced) {
+    
+  }
+      
+}
+
 setCarrier(e, i1, i2) {
   let newGrid = this.state.grid
   if (this.state.horizontal) {
-    if (i1 + 4 <= 9) {
+    if (i1 + 4 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1 + 1][i2] === 0 && newGrid[i1 + 2][i2] === 0 && newGrid[i1 + 3][i2] === 0 && newGrid[i1 + 4][i2] === 0) {
       newGrid[i1][i2] = 5
       newGrid[i1 + 1][i2] = 5
       newGrid[i1 + 2][i2] = 5
       newGrid[i1 + 3][i2] = 5
       newGrid[i1 + 4][i2] = 5
       this.setState({grid: newGrid})
+      this.setState({ship: 'battleship'})
     } else {
     alert('cannot place ship here')
     }
   } else {
-    if (i2 + 4 <= 9) {
+    if (i2 + 4 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1][i2 + 1] === 0 && newGrid[i1][i2 + 2] === 0 && newGrid[i1][i2 + 3] === 0 && newGrid[i1][i2 + 4] === 0) {
       newGrid[i1][i2] = 5
       newGrid[i1][i2 + 1] = 5
       newGrid[i1][i2 + 2] = 5
       newGrid[i1][i2 + 3] = 5
       newGrid[i1][i2 + 4] = 5
       this.setState({grid: newGrid})
+      this.setState({ship: 'battleship'})
+    } else {
+      alert('cannot place ship here')
     }
   }
 }
@@ -95,22 +98,26 @@ setCarrier(e, i1, i2) {
 setBattleship(e, i1, i2) {
   let newGrid = this.state.grid
   if (this.state.horizontal) {
-    if (i1 + 3 <= 9) {
+    if (i1 + 3 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1 + 1][i2] === 0 && newGrid[i1 + 2][i2] === 0 && newGrid[i1 + 3][i2] === 0) {
       newGrid[i1][i2] = 4
       newGrid[i1 + 1][i2] = 4
       newGrid[i1 + 2][i2] = 4
       newGrid[i1 + 3][i2] = 4
       this.setState({grid: newGrid})
+      this.setState({ship: 'cruiser'})
     } else {
       alert('cannot place ship here')
     }
   } else {
-    if (i2 + 3 <= 9) {
+    if (i2 + 3 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1][i2 + 1] === 0 && newGrid[i1][i2 + 2] === 0 && newGrid[i1][i2 + 3] === 0) {
       newGrid[i1][i2] = 4
       newGrid[i1][i2 + 1] = 4
       newGrid[i1][i2 + 2] = 4
       newGrid[i1][i2 + 3] = 4
       this.setState({grid: newGrid})
+      this.setState({ship: 'cruiser'})
+    } else {
+      alert('cannot place ship here')
     }
   }
 }
@@ -118,20 +125,24 @@ setBattleship(e, i1, i2) {
 setCruiser(e, i1, i2) {
   let newGrid = this.state.grid
   if (this.state.horizontal) {
-    if (i1 + 2 <= 9) {
+    if (i1 + 2 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1 + 1][i2] === 0 && newGrid[i1 + 2][i2] === 0) {
       newGrid[i1][i2] = 3
       newGrid[i1 + 1][i2] = 3
       newGrid[i1 + 2][i2] = 3
       this.setState({grid: newGrid})
+      this.setState({ship: 'submarine'})
     } else {
       alert('cannot place ship here')
     }
   } else {
-    if (i2 + 2 <= 9) {
+    if (i2 + 2 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1][i2 + 1] === 0 && newGrid[i1][i2 + 2] === 0) {
       newGrid[i1][i2] = 3
       newGrid[i1][i2 + 1] = 3
       newGrid[i1][i2 + 2] = 3
       this.setState({grid: newGrid})
+      this.setState({ship: 'submarine'})
+    } else {
+      alert('cannot place ship here')
     }
   }
 }
@@ -139,20 +150,24 @@ setCruiser(e, i1, i2) {
 setSubmarine(e, i1, i2) {
   let newGrid = this.state.grid
   if (this.state.horizontal) {
-    if (i1 + 2 <= 9) {
+    if (i1 + 2 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1 + 1][i2] === 0 && newGrid[i1 + 2][i2] === 0) {
       newGrid[i1][i2] = 1
       newGrid[i1 + 1][i2] = 1
       newGrid[i1 + 2][i2] = 1
       this.setState({grid: newGrid})
+      this.setState({ship: 'destroyer'})
     } else {
       alert('cannot place ship here')
     }
   } else {
-    if (i2 + 2 <= 9) {
+    if (i2 + 2 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1][i2 + 1] === 0 && newGrid[i1][i2 + 2] === 0) {
       newGrid[i1][i2] = 1
       newGrid[i1][i2 + 1] = 1
       newGrid[i1][i2 + 2] = 1
       this.setState({grid: newGrid})
+      this.setState({ship: 'destroyer'})
+    }  else {
+      alert('cannot place ship here')
     }
   }
 }
@@ -160,23 +175,35 @@ setSubmarine(e, i1, i2) {
 setDestroyer(e, i1, i2) {
   let newGrid = this.state.grid
   if (this.state.horizontal) {
-    if (i1 + 1 <= 9) {
+    if (i1 + 1 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1 + 1][i2] === 0) {
       newGrid[i1][i2] = 2
       newGrid[i1 + 1][i2] = 2
       this.setState({grid: newGrid})
+      this.props.changeTurnFn()
+      axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
+
+      })
     } else {
       alert('cannot place ship here')
     }
   } else {
-    if (i2 + 1 <= 9) {
+    if (i2 + 1 <= 9 && newGrid[i1][i2] === 0 && newGrid[i1][i2 + 1] === 0) {
       newGrid[i1][i2] = 2
       newGrid[i1][i2 + 1] = 2
       this.setState({grid: newGrid})
+      this.props.changeTurnFn()
+      axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
+
+      })
+    }  else {
+      alert('cannot place ship here')
     }
   }
 }
 
-
+directionChange = () => {
+  this.setState({horizontal: !this.state.horizontal})
+}
 
   render() {
     const mappedGrid = this.state.grid.map((element, i1) => {
@@ -214,6 +241,7 @@ setDestroyer(e, i1, i2) {
 
     return (
       <div>
+        <button onClick={this.directionChange}>Horizontal/Vertical</button>
         <div onClick={this.nice} className="container">
           {mappedGrid}
           {/* {mappedyeezy} */}
