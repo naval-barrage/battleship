@@ -11,7 +11,8 @@ class Nav extends Component {
     constructor() {
         super()
         this.state = {
-
+            username: '',
+            userPic: ''
         }
     }
     componentDidMount() {
@@ -20,6 +21,13 @@ class Nav extends Component {
                 let user = {user: {user_id: res.data.user.user_id, username: res.data.user.username},
             loggedIn: res.data.loggedIn}
             this.props.updateUser(user)
+            axios.get(`/api/users?username=${res.data.user.username}`).then(results => {
+                // console.log('hello', results.data[0])
+                this.setState({
+                    username: results.data[0].username,
+                    userPic: results.data[0].img
+                })
+            })
             }
         })
     }
@@ -44,8 +52,11 @@ class Nav extends Component {
         return(
         <div className='Nav'>
             <Link to='/home'><button className='home-button'><i class="fas fa-anchor"></i>Control Room</button></Link>
-            {/* <Link to='/gameroom'><button className='enter'><i class="fas fa-ship"></i>Gameroom</button></Link> */}
-            <button onClick={() => this.logout()} className='logout-button'><i class="fas fa-sign-out-alt"></i>Logout</button>
+            <div className='profile'>
+                    <img src={this.state.userPic} alt="A boat to show ranking"/>
+                    <div className='user'>{`${this.state.username}`}</div>
+                <button onClick={() => this.logout()} className='logout-button'><i class="fas fa-sign-out-alt"></i>Logout</button>
+            </div>
         </div>
         )
     }

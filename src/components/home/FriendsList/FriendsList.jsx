@@ -17,6 +17,7 @@ class FriendsList extends Component {
             this.setState({
                 friendsList: res.data
             })
+            // console.log(res.data)
         })
     }
     handleStartGame(guest_id) {
@@ -27,6 +28,7 @@ class FriendsList extends Component {
         })
     }
     render() {
+        // console.log(this.props.user.user.user_id)
         return(
             <div className='FriendsList'>
                 <div className="FriendsBox">
@@ -38,10 +40,14 @@ class FriendsList extends Component {
                             return (
                                 <div className='List-of-friends'>
                         <div className="FriendOnline">
-                            {/* {console.log(this.state.friendsList)} */}
+                            {/* {console.log(this.state.friendsList[i].friendship_info.friend1_wins)} */}
                             <img src={this.state.friendsList[i].friend_info[0].img} alt="A boat to show ranking"/>
                             {`${this.state.friendsList[i].friend_info[0].username}`}
-                            {` Wins: ${this.state.friendsList[i].friendship_info.friend1_wins} loses: ${this.state.friendsList[i].friendship_info.friend2_wins}`}
+                            {/* {this.state.friendsList[i].friendship_info.friend1 === this.props.user.user.user_id ? (
+                                <div>{`Wins: ${this.state.friendsList[i].friendship_info.friend2_wins} Loses: ${this.state.friendsList[i].friendship_info.friend1_wins}`}</div>
+                                ) : (
+                                <div>{`Wins: ${this.state.friendsList[i].friendship_info.friend1_wins} Loses: ${this.state.friendsList[i].friendship_info.friend2_wins}`}</div>
+                            )}  */}
                             {!this.state.friendsList[i].friendship_info.game_active ? (
                                 <button className='papa' onClick={() => this.handleStartGame(friendsList.friend_info[0].user_id)}>
                                 Start Game</button>
