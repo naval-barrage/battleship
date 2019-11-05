@@ -34,34 +34,28 @@ class YourGrid extends Component {
 }
 
 setShips(e, i1, i2) {
-  if (this.props.gameStats.ships_placed && this.props.gameStats.turn === this.props.user.user.user_id) {
+  if (!this.props.gameStats.ships_placed && this.props.gameStats.turn === this.props.user.user.user_id) {
     switch(this.state.ship) {
     case('carrier'):
-      console.log('carrier')
       this.setCarrier(e, i1, i2)
       this.setState({ship: 'battleship'})
       break
     case('battleship'):
       this.setBattleship(e, i1, i2)
       this.setState({ship: 'cruiser'})
-      console.log('battleship')
       break
     case('cruiser'):
-      console.log('cruiser')
       this.setCruiser(e, i1, i2)
       this.setState({ship: 'submarine'})
       break
     case('submarine'):
-      console.log('submarine')
       this.setSubmarine(e, i1, i2)
       this.setState({ship: 'destroyer'})
       break
     case('destroyer'):
-      console.log('destroyer')
       this.setDestroyer(e, i1, i2)
       this.setState({ship: 'all ships placed'})
       axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
-        console.log(res.data)
 
       })
       this.props.changeTurnFn()
@@ -76,7 +70,6 @@ setShips(e, i1, i2) {
 setCarrier(e, i1, i2) {
   let newGrid = this.state.grid
   if (this.state.horizontal) {
-    console.log(i1, i2)
     if (i1 + 4 <= 9) {
       newGrid[i1][i2] = 5
       newGrid[i1 + 1][i2] = 5

@@ -24,7 +24,6 @@ class EnemyGrid extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
     }
 
     componentDidUpdate(prevProps) {
@@ -43,9 +42,7 @@ class EnemyGrid extends Component {
 
     updateGame = (turn_result) => {
         for(let i = 0; i < this.state.enemyGrid.length; i++) {
-            console.log('test')
             if (this.state.enemyGrid[i].includes(1) === true || this.state.enemyGrid[i].includes(2) === true || this.state.enemyGrid[i].includes(3) === true || this.state.enemyGrid[i].includes(4) === true || this.state.enemyGrid[i].includes(5) === true) {
-                console.log('success')
                 axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
                     this.setState({isTurn: false})
                 })
@@ -64,9 +61,6 @@ class EnemyGrid extends Component {
 
     onYeet = (e, i1, i2) => {
         if (this.state.isTurn) {
-            console.log(e);
-            console.log(i1);
-            console.log(i2);
 
             if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
             let newGrid1 = this.state.enemyGrid;
@@ -82,7 +76,6 @@ class EnemyGrid extends Component {
                 enemyGrid: newGrid
             });
             this.updateGame('miss')
-            console.log(this.state);
         }
         }
     

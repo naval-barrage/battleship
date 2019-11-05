@@ -42,10 +42,7 @@ class Gameroom extends Component {
 
     getGameInfo() {
         axios.get(`/api/game/${+this.props.match.params.gameroom_id}`).then(res => {
-            console.log(res.data)
-            console.log(this.props.user.user.user_id)
             if (res.data.gameroom.host_id === this.props.user.user.user_id) {
-                console.log('you are the host')
                 this.setState({
                     yourGrid: res.data.game.host,
                     enemyGrid: res.data.game.guest,
@@ -57,7 +54,6 @@ class Gameroom extends Component {
                     this.setState({yourTurn: true})
                 }
             } else {
-                console.log('you are the guest')
                 this.setState({
                     yourGrid: res.data.game.guest,
                     enemyGrid: res.data.game.host,
