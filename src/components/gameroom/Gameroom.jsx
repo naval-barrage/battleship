@@ -8,6 +8,8 @@ import YourGrid from './YourGrid/YourGrid'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+// import Swal from 'sweetalert2'
+import Alert from '../Alert/Alert'
 
 class Gameroom extends Component {
     constructor() {
@@ -70,26 +72,29 @@ class Gameroom extends Component {
         })
     }
 
+
     render() {
         return(
         <div>
                 <Nav/>
-                {this.state.yourTurn ? 
+                {!this.state.yourTurn ? (
+                <Alert/> 
+                ) : null
+            }
+                {this.state.yourTurn ?
             <div className='Gameroom'>
-
                 <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
                 <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
                 <Ships/>
-        </div> 
-        : 
+        </div>
+        :
         <div className='Gameroom gameroom-blurred'>
             <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
             <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
             <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
             <Ships/>
         </div>}
-
     </div>
         )
     }
