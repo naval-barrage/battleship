@@ -20,6 +20,7 @@ export default class Search extends Component {
     handleSearch() {
         if (this.state.username !== '') {
             axios.get(`/api/users?username=${this.state.username}`).then(res => {
+                // console.log(res.data)
                 this.setState({
                     searchResults: res.data,
                     toggleSearch: !this.state.toggleSearch

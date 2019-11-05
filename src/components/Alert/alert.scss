@@ -82,9 +82,9 @@ body{
   box-shadow: 0 0 66px 6px #A51414;
   animation: shadow 1s infinite ease;
 }
-.dot1 {
+.dot {
   opacity: 0;
-  border: 100px solid #e0f4a5;
+  border: 5px solid rgba(0, 231, 244, 0.8);
   border-radius: 100%;
   position:absolute;
   -webkit-animation: blink .5s ease-out;
@@ -96,21 +96,14 @@ body{
   z-index: 2500;
 }
 
-.dot1 .pos11 {
-  left: 10%;
-  top: 10%;
+.dot .pos1 {
+  left: 15%;
+  top: 100%;
   -webkit-animation-delay: .25s;
   -moz-animation-delay: .25s;
   animation-delay: 0.30s;
 }
 
-.dot .pos21 {
-  left:10px;
-  top:13px;
-  -webkit-animation-delay: 1.5s;
-  -moz-animation-delay: 1.5s;
-  animation-delay: 1.35s;
-}
 
 
 @keyframes rotate360 {
