@@ -9,6 +9,7 @@ import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 // import Swal from 'sweetalert2'
+import Alert from '../Alert/Alert'
 
 class Gameroom extends Component {
     constructor() {
@@ -71,34 +72,29 @@ class Gameroom extends Component {
         })
     }
 
+
     render() {
         return(
         <div>
                 <Nav/>
-                {!this.state.yourTurn ? 
-                        <div>
-                    <div className='not-u-turn'>
-                    <p>Its Not your turn anymore, please wait for your opponent to make their move.</p>
-                    <div class="radar">
-                    <div class="pointer"></div>
-                    <div class="shadow"></div>
-                    </div></div>
-        
-        <div className='Gameroom gameroom-blurred'>
-        <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
-        <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
-        <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-        <Ships/>
-    </div>
-        </div> 
-        : 
+                {!this.state.yourTurn ? (
+                <Alert/> 
+                ) : null
+            }
+                {this.state.yourTurn ?
+            <div className='Gameroom'>
+                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
+                <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
+                <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
+                <Ships/>
+        </div>
+        :
         <div className='Gameroom gameroom-blurred'>
             <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
             <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
             <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
             <Ships/>
         </div>}
-
     </div>
         )
     }
