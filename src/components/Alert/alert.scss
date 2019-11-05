@@ -1,4 +1,12 @@
 $size: 100px;
+.not-u-turn {
+    opacity: 0;
+    animation-name: alert-opacity;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
 .radar {
     background: url(https://gtms03.alicdn.com/tps/i3/TB1Vet9IVXXXXbuapXXb2YSIVXX-567-567.png) no-repeat 50% 50%;
     width: $size;
@@ -65,4 +73,13 @@ $size: 100px;
       opacity: 0;
     }
   } 
+
+  @keyframes alert-opacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   
