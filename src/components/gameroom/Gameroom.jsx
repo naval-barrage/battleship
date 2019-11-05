@@ -8,6 +8,7 @@ import YourGrid from './YourGrid/YourGrid'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+// import Swal from 'sweetalert2'
 
 class Gameroom extends Component {
     constructor() {
@@ -98,9 +99,13 @@ class Gameroom extends Component {
         return(
         <div>
                 <Nav/>
+                {/* <div className='not-u-turn'>Its Not Your Turn!
+                <div class="radar">
+                <div class="pointer"></div>
+                <div class="shadow"></div>
+                </div></div> */}
                 {this.state.yourTurn ? 
             <div className='Gameroom'>
-
                 <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
                 <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
@@ -113,7 +118,6 @@ class Gameroom extends Component {
             <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
             <Ships/>
         </div>}
-
     </div>
         )
     }
