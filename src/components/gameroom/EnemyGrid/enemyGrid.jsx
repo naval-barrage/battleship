@@ -97,7 +97,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="sub"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -106,7 +106,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="destroyer"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -115,7 +115,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="cruiser"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -124,7 +124,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="battleship"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -133,7 +133,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="carrier"
+                id="empty"
                 className="yeet"
             ></div>
             );
