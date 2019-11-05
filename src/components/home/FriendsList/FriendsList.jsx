@@ -14,7 +14,7 @@ class FriendsList extends Component {
     }
     componentDidMount() {
         axios.get(`/api/friends`).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({
                 friendsList: res.data
             })
