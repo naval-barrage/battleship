@@ -35,6 +35,10 @@ class Gameroom extends Component {
         this.getGameInfo()
     }
 
+    changeTurn = () => {
+        this.setState({yourTurn: false})
+    }
+
     getGameInfo() {
         axios.get(`/api/game/${+this.props.match.params.gameroom_id}`).then(res => {
             console.log(res.data)
@@ -67,34 +71,6 @@ class Gameroom extends Component {
         })
     }
 
-    // updateEnemyGrid = (grid) => {
-    //     this.setState({enemyGrid: grid})
-    // }
-
-    // updateYourGrid = (grid) => {
-    //     this.setState({yourGrid: grid})
-    // }
-
-    // updateGame = (winner_id, turn_result, ship_sunk) => {
-    //     axios.put(`/api/game/${+this.props.match.params.gameroom}/${winner_id}?turn_result=${turn_result}&ship_sunk=${ship_sunk}`, this.state.yourGrid).then(res => {
-    //         // IF ENEMY BOARD HAS NO 2-5 END GAME
-    //         this.setState({yourTurn: false})
-    //         axios.put(`/api/users/img/${winner_id}`).then(res => {
-    //             // UPDATES USER IMAGE
-    //         })
-    //     })
-    //     // TURN COMPLETE METHOD
-    //     // CONDITIONAL RENDER BELLOW IF ITS OPPONENTS TURN
-    // }
-
-    // endGame = (winner_id) => {
-    //     axios.delete(`/api/games/end/${+this.props.match.prams.gameroom}/${winner_id}`).then(res => {
-    //     })
-    //     // MESSAGE OF GAME END
-    //     // SEND BACK TO HOME SCREEN
-    // }
-
-
     render() {
         return(
         <div>
@@ -116,13 +92,13 @@ class Gameroom extends Component {
     </div>
         </div> 
         : 
-            <div className='Gameroom'>
-                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
-                <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
-                <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-                <Ships/>
-        </div> 
-    }
+        <div className='Gameroom gameroom-blurred'>
+            <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
+            <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
+            <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
+            <Ships/>
+        </div>}
+
     </div>
         )
     }
