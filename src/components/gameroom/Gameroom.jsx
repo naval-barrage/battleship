@@ -99,25 +99,30 @@ class Gameroom extends Component {
         return(
         <div>
                 <Nav/>
-                {/* <div className='not-u-turn'>Its Not Your Turn!
-                <div class="radar">
-                <div class="pointer"></div>
-                <div class="shadow"></div>
-                </div></div> */}
-                {this.state.yourTurn ? 
+                {!this.state.yourTurn ? 
+                        <div>
+                    <div className='not-u-turn'>
+                    <p>Its Not your turn anymore, please wait for your opponent to make their move.</p>
+                    <div class="radar">
+                    <div class="pointer"></div>
+                    <div class="shadow"></div>
+                    </div></div>
+        
+        <div className='Gameroom gameroom-blurred'>
+        <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
+        <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
+        <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
+        <Ships/>
+    </div>
+        </div> 
+        : 
             <div className='Gameroom'>
                 <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
                 <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
                 <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
                 <Ships/>
         </div> 
-        : 
-        <div className='Gameroom gameroom-blurred'>
-            <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats}/>
-            <YourGrid grid={this.state.yourGrid} updateYourGridFn={this.updateYourGrid}/>
-            <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-            <Ships/>
-        </div>}
+    }
     </div>
         )
     }
