@@ -12,11 +12,11 @@ function Alert() {
             <div className="pointer"></div>
             <div className="shadow"></div>
             </div></div>
-            <div className="dot1 pos11"></div>
-            <div className="dot1 pos21"></div>
-            <div className="dot1 pos31"></div>
-            <div className="dot1 pos41"></div>
-            <div className="dot1 pos51"></div>
+            <div className="dot pos1"></div>
+            <div className="dot pos2"></div>
+            <div className="dot pos3"></div>
+            <div className="dot pos4"></div>
+            <div className="dot pos5"></div>
             </div>
     </div>
   );
