@@ -19,7 +19,7 @@ class EnemyGrid extends Component {
             
             enemyGrid : [],
             ship_sunk: false,
-            isTurn: false
+            isTurn: false,
         }
     }
 
@@ -49,6 +49,7 @@ class EnemyGrid extends Component {
                 axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
                     this.setState({isTurn: false})
                 })
+                this.props.changeTurnFn()
             break
             } else {
                 axios.delete(`/api/games/end/${this.props.match.params.gameroom_id}/${this.props.user.user.user_id}`).then(res => {
