@@ -24,7 +24,8 @@ class YourGrid extends Component {
       grid: [],
       ship: 'carrier',
       horizontal: false,
-      shipsPlaced: false
+      shipsPlaced: false,
+      gameStats: {}
     };
   }
 
@@ -35,6 +36,9 @@ class YourGrid extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.grid !== prevProps.grid) {
       this.setState({ grid: this.props.grid });
+    }
+    if (this.props.gameStats !== prevProps.gameStats) {
+      this.setState({gameStats: this.props.gameStats})
     }
   }
 
@@ -76,29 +80,13 @@ class YourGrid extends Component {
   
   }
   
-  
-  
-  
-  
-  
-  
   sendData() {
-  
-  
-  
+
     if (this.state.shipsPlaced) {
     }
   }
-  
-  
-  
-  
-  
-  
-  
+    
   setCarrier(e, i1, i2) {
-  
-  
   
     let newGrid = this.state.grid
     if (this.state.horizontal) {
@@ -140,12 +128,7 @@ class YourGrid extends Component {
     }
   }
   
-  
-  
-  
-  
-  
-  
+
   setBattleship(e, i1, i2) {
     let newGrid = this.state.grid
     if (this.state.horizontal) {
@@ -229,9 +212,7 @@ class YourGrid extends Component {
       }
     }
   }
-  
-  
-  
+
   
   setSubmarine(e, i1, i2) {
     let newGrid = this.state.grid
@@ -323,16 +304,6 @@ class YourGrid extends Component {
     this.setState({horizontal: !this.state.horizontal})
   }
 
-
-
-
-
-
-
-
-
-
-
   render() {
     const mappedGrid = this.state.grid.map((element, i1) => {
       return element.map((element2, i2) => {
@@ -373,10 +344,10 @@ class YourGrid extends Component {
         }
       });
     });
-
+        // console.log(this.props.gameStats.total_turns)
     return (
       <div className='outerboi'>
-        {this.state.shipsPlaced ? (
+        {+this.props.gameStats.total_turns <= 0 ?  (
           <div className='instructions'>
           <div className='shipset'>
             <p>{`Set the ${this.state.ship.charAt(0).toUpperCase() + this.state.ship.slice(1)}`}</p>
@@ -426,15 +397,10 @@ class YourGrid extends Component {
             </div>
           ) : null}
         </div>
-        ) : (
+          ) : null  }
         <div onClick={this.nice} className="container">
           {mappedGrid}
-          {/* {mappedyeezy} */}
         </div>
-        )}
-        
-
-        
       </div>
     );
   }

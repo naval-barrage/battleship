@@ -19,6 +19,16 @@ class FriendsList extends Component {
             })
         })
     }
+    componentDidUpdate(prevState) {
+        if (this.state.friendsList !== prevState.friendsList) {
+            axios.get(`/api/friends`).then(res => {
+                // console.log(res.data)
+                this.setState({
+                    friendsList: res.data
+                })
+            })
+        }
+    }
     handleStartGame(guest_id) {
         axios.post(`/api/games/new/${+guest_id}`).then(res => {
             // swal.fire({type: 'success' , text: 'Game Started' , showConfirmButton: false, timer: 1000})

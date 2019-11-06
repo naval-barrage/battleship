@@ -71,7 +71,7 @@ class EnemyGrid extends Component {
     }
 
     onYeet = (e, i1, i2) => {
-        if (this.state.isTurn) {
+        if (this.state.isTurn && !this.props.gameStats.ship_placed) {
 
             if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
                 let newGrid1 = this.state.enemyGrid;

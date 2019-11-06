@@ -100,8 +100,6 @@ class Gameroom extends Component {
         {this.state.yourTurn ? (
           this.state.shipsSet ? (
             <div className="Gameroom">
-              {/* {console.log(this.state.shipsSet)} */}
-             
                 <EnemyGrid
                   grid={this.state.enemyGrid}
                   updateEnemyGridFn={this.updateEnemyGrid}
@@ -112,7 +110,7 @@ class Gameroom extends Component {
                   grid={this.state.yourGrid}
                   gameStats={this.state.gameStats}
                   changeTurnFn={this.changeTurn}
-                />
+                  />
               
               <div className='leaderd'>
                 <LeaderBoard
@@ -124,7 +122,6 @@ class Gameroom extends Component {
             </div>
           ) : (
             <div className="bigGrid">
-                
                 <p>o</p>
               <YourGrid
                 grid={this.state.yourGrid}
@@ -134,7 +131,6 @@ class Gameroom extends Component {
             </div>
           )
         ) : (
-            // this.state.shipsSet ? (
                 <div className="Gameroom gameroom-blurred">
                     
                     <EnemyGrid
@@ -154,17 +150,6 @@ class Gameroom extends Component {
                     />
                     <Ships />
                 </div>
-            // ) : (
-            //     <div className="bigGrid gameroom-blurred">
-                
-            //     <p>o</p>
-            //   <YourGrid
-            //     grid={this.state.yourGrid}
-            //     gameStats={this.state.gameStats}
-            //     changeTurnFn={this.changeTurn}
-            //   />
-            // </div>
-            // )
         )}
       </div>
     );
