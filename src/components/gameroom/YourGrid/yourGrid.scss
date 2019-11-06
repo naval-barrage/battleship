@@ -72,6 +72,12 @@
 //   display: inline-block;
 //   margin-right: 10px;
 // }
+@mixin buttons() {
+  background-size: cover;
+  color: white;
+  border-color: black;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 @import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
 .instructions {
   background-image: url('../../assets/jamestown.jpg');
@@ -83,6 +89,7 @@
   border: 1px solid black;
   display: flex;
   margin-left: 1vw;
+  justify-content: space-evenly;
 
   .shipset {
     background: #288ebc;
@@ -102,6 +109,8 @@
   .horizontal {
     height: 23px;
     margin: 3px 2px;
+    background-image: url('./../../assets/Flags/echo.jpg');
+    @include buttons();
   }
   .type-of-ship {
     background: rgb(205, 230, 181);
