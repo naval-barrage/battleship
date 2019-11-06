@@ -233,7 +233,7 @@ class YourGrid extends Component {
     });
 
     return (
-      <div>
+      <div className='outerboi'>
         <div className='instructions'>
           <div className='shipset'>
             <p>{`Set the ${this.state.ship.charAt(0).toUpperCase() + this.state.ship.slice(1)}`}</p>
