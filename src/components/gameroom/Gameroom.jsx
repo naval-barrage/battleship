@@ -9,32 +9,45 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 // import Swal from 'sweetalert2'
-import Alert from "../Alert/Alert";
+import Alert from '../Alert/Alert'
+import {toast} from 'react-toastify'
 
 class Gameroom extends Component {
-  constructor() {
-    super();
-    this.state = {
-      // 0 = empty
-      // 1 = submarine(3)
-      // 2 = destroyer(2)
-      // 3 = cruiser(3)
-      // 4 = battleship(4)
-      // 5 = carrier(5)
-      // 6 = miss
-      // 7 = hit
-      yourGrid: [],
-      enemyGrid: [],
-      friendStats: {},
-      gameStats: {},
-      yourTurn: false,
-      shipsSet: false
-    };
-  }
+    constructor() {
+        super()
+        this.state = {
+            // 0 = empty
+            // 1 = submarine(3)
+            // 2 = destroyer(2)
+            // 3 = cruiser(3)
+            // 4 = battleship(4)
+            // 5 = carrier(5)
+            // 6 = miss
+            // 7 = hit
+            yourGrid: [],
+            enemyGrid: [],
+            friendStats: {},
+            gameStats: {},
+            yourTurn: false,
+            shipsSet: false
+        }
+    }
 
-  componentDidMount() {
-    this.getGameInfo();
-  }
+    componentDidMount() {
+        this.getGameInfo()
+        this.toastAlert()
+    }
+
+  
+
+    toastAlert = () => {
+        toast('test!')
+        toast.configure({
+            autoClose: 8000,
+            draggable: false,
+        })
+    }
+    
 
     getGameInfo() {
         axios.get(`/api/game/${+this.props.match.params.gameroom_id}`).then(res => {

@@ -20,6 +20,7 @@ class EnemyGrid extends Component {
             enemyGrid : [],
             ship_sunk: false,
             isTurn: false,
+            message: ''
         }
     }
 
@@ -51,7 +52,7 @@ class EnemyGrid extends Component {
         if (ships === true) {
             this.props.changeTurnFn()
             this.setState({isTurn: false})
-            axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
+            axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid, message: this.state.message}).then(res => {
             })
         } else {
             axios.delete(`/api/games/end/${this.props.match.params.gameroom_id}/${this.props.user.user.user_id}`).then(res => {
@@ -70,19 +71,36 @@ class EnemyGrid extends Component {
         if (this.state.isTurn) {
 
             if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
-            let newGrid1 = this.state.enemyGrid;
-            newGrid1[i1][i2] = 7;
-            this.setState({
-                enemyGrid: newGrid1
-            });
-            this.updateGame('hit')
+                let newGrid1 = this.state.enemyGrid;
+                let val = e
+                newGrid1[i1][i2] = 7;
+                let ship = false
+                for (let i = 0; i < this.state.enemyGrid.length; i++) {
+                    if (this.state.enemyGrid[i].includes(val) === true) {
+                        ship = true
+                    }
+                }
+                if (!ship) {
+                    this.setState({
+                    enemyGrid: newGrid1,
+                    message: 'Hit!'
+                }, () => this.updateGame('hit'));
+                
+                } else {
+                    this.setState({
+                        enemyGrid: newGrid1,
+                        message: 'Ship Sunk!'
+                    }, () => this.updateGame('hit'))
+                
+                }
+                
             } else {
             let newGrid = this.state.enemyGrid;
             newGrid[i1][i2] = 6;
             this.setState({
-                enemyGrid: newGrid
-            });
-            this.updateGame('miss')
+                enemyGrid: newGrid,
+                message: 'Miss!'
+            }, () => this.updateGame('miss'));
         }
         }
     

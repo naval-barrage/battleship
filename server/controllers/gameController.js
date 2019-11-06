@@ -94,18 +94,15 @@ module.exports = {
     async updateGame(req, res) {
         const db = req.app.get('db')
         const {gameroom_id, user_id} = req.params
-        const {grid} = req.body
+        const {grid, message} = req.body
         const {turn_result, ship_sunk} = req.query
 
-        console.log([gameroom_id, user_id])
-        console.log(grid)
-        console.log([turn_result, ship_sunk])
+        console.log(message)
 
 
         // GET GAMEROOM INFO
 
         const gameroom = await db.get_gameroom(gameroom_id)
-        console.log(gameroom)
 
         // CHECK IF USER WHO TOOK THE TURN IS THE HOST OR GUEST
 
@@ -115,7 +112,6 @@ module.exports = {
         } else {
             user = 'guest'
         }
-        console.log(user)
 
         if (user === 'host') {
             let host_hits = gameroom[0].host_hits
@@ -129,8 +125,7 @@ module.exports = {
                     host_ships_sunk++
                 }
             }
-            console.log([host_hits, host_misses, host_ships_sunk])
-            const host_update = await db.update_gameroom_host_turn([gameroom[0].guest_id, host_hits, host_misses, host_ships_sunk, gameroom_id])
+            const host_update = await db.update_gameroom_host_turn([gameroom[0].guest_id, host_hits, host_misses, host_ships_sunk, gameroom_id, message])
 
             Game.findByIdAndUpdate(gameroom[0].game_id, {"guest": grid}, function (err, game) {
                 if (err) {
@@ -155,8 +150,7 @@ module.exports = {
                     guest_ships_sunk++
                 }
             }
-            console.log([guest_hits, guest_misses, guest_ships_sunk, total_turns])
-            const guest_update = await db.update_gameroom_guest_turn([gameroom[0].host_id, guest_hits, guest_misses, guest_ships_sunk, total_turns, gameroom_id])
+            const guest_update = await db.update_gameroom_guest_turn([gameroom[0].host_id, guest_hits, guest_misses, guest_ships_sunk, total_turns, gameroom_id, message])
             // UPDATE GUEST BOARD AND SEND
             Game.findByIdAndUpdate(gameroom[0].game_id, {"host": grid}, function (err, game) {
                 if (err) {
