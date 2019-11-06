@@ -33,3 +33,21 @@
     height: 30px;
     width: 90px;
 }
+.profile {
+    height: 8vh;
+    width: auto;
+    padding: 6px;
+    background: #288ebc;
+    display: flex;
+    box-sizing: border-box;
+    border: 1px solid black;
+    img {
+        height: 30px;
+        width: 30px;
+        clip-path: circle(43%);
+        font-size: 7px;
+    }
+    .user {
+        margin: 0 5px ;
+    }
+}

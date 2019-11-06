@@ -20,7 +20,6 @@ class ActiveGames extends Component {
         })
     }
     goToGame(gameroom_id) {
-        console.log(gameroom_id)
         axios.get(`/api/game/${gameroom_id}`).then(res => {
             swal.fire({type: 'success' , text: 'Game On!' , showConfirmButton: false, timer: 1000})
             this.props.history.push(`/gameroom/${gameroom_id}`)

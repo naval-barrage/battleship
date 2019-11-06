@@ -24,7 +24,6 @@ class EnemyGrid extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
     }
 
     componentDidUpdate(prevProps) {
@@ -42,31 +41,33 @@ class EnemyGrid extends Component {
     // If there was a hit pass in the string 'hit' as well as 'miss' if the turn result is a miss
 
     updateGame = (turn_result) => {
+        let ships = false
         for(let i = 0; i < this.state.enemyGrid.length; i++) {
-            console.log('test')
             if (this.state.enemyGrid[i].includes(1) === true || this.state.enemyGrid[i].includes(2) === true || this.state.enemyGrid[i].includes(3) === true || this.state.enemyGrid[i].includes(4) === true || this.state.enemyGrid[i].includes(5) === true) {
-                console.log('success')
-                axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
-                    this.setState({isTurn: false})
-                })
-                this.props.changeTurnFn()
-            break
-            } else {
-                axios.delete(`/api/games/end/${this.props.match.params.gameroom_id}/${this.props.user.user.user_id}`).then(res => {
-                    alert('you won!')
-                    this.props.history.push('/home')
-                })
+                ships = true
             }
         }
+        console.log(ships)
+        if (ships === true) {
+            this.props.changeTurnFn()
+            this.setState({isTurn: false})
+            axios.put(`/api/game/${+this.props.match.params.gameroom_id}/${this.props.user.user.user_id}?turn_result=${turn_result}&ship_sunk=${this.state.ship_sunk}`, {grid: this.state.enemyGrid}).then(res => {
+            })
+        } else {
+            axios.delete(`/api/games/end/${this.props.match.params.gameroom_id}/${this.props.user.user.user_id}`).then(res => {
+            })
+            axios.put(`/api/users/img/${this.props.user.user.user_id}`).then(res => {
+            })
+            alert('you won!')
+            this.props.history.push('/home')
+            }
+        
 
         
     }
 
     onYeet = (e, i1, i2) => {
         if (this.state.isTurn) {
-            console.log(e);
-            console.log(i1);
-            console.log(i2);
 
             if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
             let newGrid1 = this.state.enemyGrid;
@@ -82,7 +83,6 @@ class EnemyGrid extends Component {
                 enemyGrid: newGrid
             });
             this.updateGame('miss')
-            console.log(this.state);
         }
         }
     
@@ -104,7 +104,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="sub"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -113,7 +113,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="destroyer"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -122,7 +122,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="cruiser"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -131,7 +131,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="battleship"
+                id="empty"
                 className="yeet"
             ></div>
             );
@@ -140,7 +140,7 @@ render() {
             return (
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
-                id="carrier"
+                id="empty"
                 className="yeet"
             ></div>
             );

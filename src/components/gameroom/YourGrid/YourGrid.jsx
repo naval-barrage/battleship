@@ -19,8 +19,9 @@ class YourGrid extends Component {
       // 7 = hit
 
       grid: [],
-      ship: "carrier",
-      horizontal: true
+      ship: 'carrier',
+      horizontal: true,
+      shipsPlaced: false
     };
   }
 
@@ -233,6 +234,56 @@ class YourGrid extends Component {
 
     return (
       <div>
+        <div className='instructions'>
+          <div className='shipset'>
+            <p>{`Set the ${this.state.ship.charAt(0).toUpperCase() + this.state.ship.slice(1)}`}</p>
+          </div>
+          {this.state.horizontal ? (
+            <div>
+              <button className='horizontal' onClick={this.directionChange}><i class="fas fa-sync-alt"></i>Horizontal</button>
+            </div>
+            ) : (
+              <button className='horizontal' onClick={this.directionChange}><i class="fas fa-sync-alt"></i>Vertical</button>
+          )}
+          {this.state.ship === 'carrier' ? (
+            <div className='type-of-ship'>
+              <div className="carrier-box"></div>
+              <div className="carrier-box"></div>
+              <div className="carrier-box"></div>
+              <div className="carrier-box"></div>
+              <div className="carrier-box"></div>
+            </div>
+            ) : null}
+          {this.state.ship === 'battleship' ? (
+            <div className='type-of-ship'>
+              <div className="battleship-box"></div>
+              <div className="battleship-box"></div>
+              <div className="battleship-box"></div>
+              <div className="battleship-box"></div>
+            </div>
+            ) : null}
+          {this.state.ship === 'cruiser' ? (
+            <div className='type-of-ship'>
+              <div className="cruiser-box"></div>
+              <div className="cruiser-box"></div>
+              <div className="cruiser-box"></div>
+            </div>
+            ) : null}
+          {this.state.ship === 'submarine' ? (
+            <div className='type-of-ship'>
+              <div className="sub-box"></div>
+              <div className="sub-box"></div>
+              <div className="sub-box"></div>
+            </div>
+            ) : null}
+          {this.state.ship === 'destroyer' ? (
+            <div className='type-of-ship'>
+              <div className="destroyer-box"></div>
+              <div className="destroyer-box"></div>
+            </div>
+          ) : null}
+        </div>
+
         <div onClick={this.nice} className="container">
           {mappedGrid}
           {/* {mappedyeezy} */}
