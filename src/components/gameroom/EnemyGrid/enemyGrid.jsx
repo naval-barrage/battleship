@@ -3,6 +3,7 @@ import './enemyGrid.scss'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+import Swal from 'sweetalert2'
 
 class EnemyGrid extends Component {
     constructor() {
@@ -81,15 +82,27 @@ class EnemyGrid extends Component {
                     }
                 }
                 if (!ship) {
+                    Swal.fire({
+                        type: 'success',
+                        text: 'You hit an enemy ship!',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                     this.setState({
                     enemyGrid: newGrid1,
-                    message: 'Hit!'
+                    message: 'The enemy hit your ship!'
                 }, () => this.updateGame('hit'));
                 
                 } else {
+                    Swal.fire({
+                        type: 'success',
+                        text: 'You sunk an enemy ship!',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                     this.setState({
                         enemyGrid: newGrid1,
-                        message: 'Ship Sunk!'
+                        message: 'The enemy sunk your ship!'
                     }, () => this.updateGame('hit'))
                 
                 }
@@ -97,9 +110,15 @@ class EnemyGrid extends Component {
             } else {
             let newGrid = this.state.enemyGrid;
             newGrid[i1][i2] = 6;
+            Swal.fire({
+                type: 'warning',
+                text: 'Miss fire!',
+                showConfirmButton: false,
+                timer: 1000
+            })
             this.setState({
                 enemyGrid: newGrid,
-                message: 'Miss!'
+                message: 'The enemy missed!'
             }, () => this.updateGame('miss'));
         }
         }

@@ -10,7 +10,9 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 // import Swal from 'sweetalert2'
 import Alert from '../Alert/Alert'
-import {toast} from 'react-toastify'
+import Swal from 'sweetalert2'
+
+
 
 class Gameroom extends Component {
     constructor() {
@@ -35,17 +37,23 @@ class Gameroom extends Component {
 
     componentDidMount() {
         this.getGameInfo()
-        this.toastAlert()
     }
 
-  
+    changeTurn = () => {
+        this.setState({yourTurn: false})
+    }
 
-    toastAlert = () => {
-        toast('test!')
-        toast.configure({
-            autoClose: 8000,
-            draggable: false,
-        })
+    componentDidUpdate(prevState) {
+        if (this.state.gameStats !== prevState) {
+            if (this.state.yourTurn && this.state.shipsSet) {
+                Swal.fire({
+                    type: 'warning',
+                    text: `${this.state.gameStats.message}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        }
     }
     
 
