@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import './gameroom.scss'
-import Nav from '../Nav/Nav'
-import EnemyGrid from './EnemyGrid/enemyGrid'
-import LeaderBoard from './LeaderBoard/LeaderBoard'
-import Ships from './Ships/Ships'
-import YourGrid from './YourGrid/YourGrid'
-import axios from 'axios'
-import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React, { Component } from "react";
+import "./gameroom.scss";
+import Nav from "../Nav/Nav";
+import EnemyGrid from "./EnemyGrid/enemyGrid";
+import LeaderBoard from "./LeaderBoard/LeaderBoard";
+import Ships from "./Ships/Ships";
+import YourGrid from "./YourGrid/YourGrid";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 // import Swal from 'sweetalert2'
 import Alert from '../Alert/Alert'
 import {toast} from 'react-toastify'
@@ -38,9 +38,7 @@ class Gameroom extends Component {
         this.toastAlert()
     }
 
-    changeTurn = () => {
-        this.setState({yourTurn: false})
-    }
+  
 
     toastAlert = () => {
         toast('test!')
@@ -79,37 +77,76 @@ class Gameroom extends Component {
         })
     }
 
+ 
 
-    render() {
-        return(
-        <div>
-                <Nav/>
-                {!this.state.yourTurn ? (
-                <Alert/> 
-                ) : null
-            }
-                {this.state.yourTurn ?
-            <div className='Gameroom'>
-                <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
-                <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
-                <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-                <Ships/>
-        </div>
-        :
-        <div className='Gameroom gameroom-blurred'>
-            <EnemyGrid grid={this.state.enemyGrid} updateEnemyGridFn={this.updateEnemyGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
-            <YourGrid grid={this.state.yourGrid} gameStats={this.state.gameStats} changeTurnFn={this.changeTurn}/>
-            <LeaderBoard friendStats={this.state.friendStats} gameStats={this.state.gameStats}/>
-            <Ships/>
-        </div>}
-    </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Nav />
+        {!this.state.yourTurn ? <Alert /> : null}
+        {this.state.yourTurn ? (
+          this.state.shipsSet ? (
+            <div className="Gameroom">
+              {/* {console.log(this.state.shipsSet)} */}
+             
+                <EnemyGrid
+                  grid={this.state.enemyGrid}
+                  updateEnemyGridFn={this.updateEnemyGrid}
+                  gameStats={this.state.gameStats}
+                  changeTurnFn={this.changeTurn}
+                />
+                <YourGrid
+                  grid={this.state.yourGrid}
+                  gameStats={this.state.gameStats}
+                  changeTurnFn={this.changeTurn}
+                />
+              
+              <div className='leaderd'>
+                <LeaderBoard
+                  friendStats={this.state.friendStats}
+                  gameStats={this.state.gameStats}
+                />
+                <Ships />
+              </div>
+            </div>
+          ) : (
+            <div className="bigGrid">
+                {/* <p>o</p> */}
+              <YourGrid
+                grid={this.state.yourGrid}
+                gameStats={this.state.gameStats}
+                changeTurnFn={this.changeTurn}
+              />
+            </div>
+          )
+        ) : (
+          <div className="Gameroom gameroom-blurred">
+            <EnemyGrid
+              grid={this.state.enemyGrid}
+              updateEnemyGridFn={this.updateEnemyGrid}
+              gameStats={this.state.gameStats}
+              changeTurnFn={this.changeTurn}
+            />
+            <YourGrid
+              grid={this.state.yourGrid}
+              gameStats={this.state.gameStats}
+              changeTurnFn={this.changeTurn}
+            />
+            <LeaderBoard
+              friendStats={this.state.friendStats}
+              gameStats={this.state.gameStats}
+            />
+            <Ships />
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    const { user, loggedIn } = state;
-    return { user, loggedIn };
+  const { user, loggedIn } = state;
+  return { user, loggedIn };
 }
 
 export default connect(mapStateToProps)(withRouter(Gameroom));
