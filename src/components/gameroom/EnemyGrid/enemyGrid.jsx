@@ -190,7 +190,7 @@ render() {
                 onClick={() => this.onYeet(element2, i1, i2)}
                 id="miss"
                 className="yeet"
-            ></div>
+            ><img src={miss} alt="Miss Fire!"/></div>
             );
 
         case 7:
@@ -199,7 +199,7 @@ render() {
                 onClick={() => this.onYeet(element2, i1, i2)}
                 id="hit"
                 classname="yeet"
-            ><img src={miss} alt="Miss Fire"/></div>
+            ><img src={hit} alt="Ship hit!"/></div>
             );
 
         default:
