@@ -38,6 +38,7 @@
 .papa {
     background-image: url('./../../assets/Flags/papa.jpg');
     @include buttons();
+    cursor: pointer;
 }
 .uniform {
     background-image: url('./../../assets/Flags/uniform.jpg');
