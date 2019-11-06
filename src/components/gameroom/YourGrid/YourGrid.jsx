@@ -5,6 +5,8 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Swal from 'sweetalert2'
+import hit from '../../assets/hit.png'
+import miss from '../../assets/splash.png'
 
 class YourGrid extends Component {
   constructor() {
@@ -307,13 +309,14 @@ class YourGrid extends Component {
             return <div id="battleship" className="yeet"></div>;
 
           case 5:
-            return <div id="carrier" className="yeet"></div>;
+            return <div id="carrier" className="yeet">
+            </div>;
 
           case 6:
-            return <div id="miss" className="yeet"></div>;
+            return <div id="miss" className="yeet"><img src={miss} alt="Miss Fire"/></div>;
 
           case 7:
-            return <div id="hit" classname="yeet"></div>;
+            return <div id="hit" classname="yeet"><img src={hit} alt="Ship Hit"/></div>;
 
           default:
             return <div className="yeet"></div>;

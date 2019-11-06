@@ -4,6 +4,8 @@ import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Swal from 'sweetalert2'
+import hit from '../../assets/hit.png'
+import miss from '../../assets/splash.png'
 
 class EnemyGrid extends Component {
     constructor() {
@@ -197,7 +199,7 @@ render() {
                 onClick={() => this.onYeet(element2, i1, i2)}
                 id="hit"
                 classname="yeet"
-            ></div>
+            ><img src={miss} alt="Miss Fire"/></div>
             );
 
         default:
@@ -205,7 +207,7 @@ render() {
             <div
                 onClick={() => this.onYeet(element2, i1, i2)}
                 className="yeet"
-            ></div>
+            ><img src={hit} alt="Ship Hit"/></div>
             );
         }
     });

@@ -13,6 +13,8 @@
 
   justify-content: center;
 
+  border-radius: 5px;
+
   // width: 100px;
 
   // margin: auto auto;
@@ -31,28 +33,53 @@
   z-index: 10;
 }
 #empty{
-  background:blue
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #sub{
-  background: green;
+  background-color: #378b29;
+  background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
 }
 #destroyer{
-  background:orange
+  background-color: #ff4e00;
+  background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 }
 #cruiser{
-  background:yellow
+  background-color: #fbb034;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
 }
 #battleship{
-  background:palevioletred
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+
 }
 #carrier{
-  background:whitesmoke
+  background-color: #000000;
+  background-image: linear-gradient(315deg, #000000 0%, #b82e1f 74%);
 }
 #hit{
-  background:rgb(201, 14, 14)
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  img {
+    width: 70%;
+    height: auto;
+  }
 }
 #miss{
-  background: black
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  img {
+    width: 70%;
+    height: auto;
+  }
 }
 
 
