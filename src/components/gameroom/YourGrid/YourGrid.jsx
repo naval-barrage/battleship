@@ -21,7 +21,7 @@ class YourGrid extends Component {
 
       grid: [],
       ship: 'carrier',
-      horizontal: true,
+      horizontal: false,
       shipsPlaced: false
     };
   }
@@ -315,7 +315,7 @@ class YourGrid extends Component {
           <div className='shipset'>
             <p>{`Set the ${this.state.ship.charAt(0).toUpperCase() + this.state.ship.slice(1)}`}</p>
           </div>
-          {this.state.horizontal ? (
+          {!this.state.horizontal ? (
             <div>
               <button className='horizontal' onClick={this.directionChange}><i class="fas fa-sync-alt"></i>Horizontal</button>
             </div>

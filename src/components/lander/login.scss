@@ -1,9 +1,22 @@
 @import '../../variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
 @mixin buttons() {
     background-size: cover;
     color: white;
     border-color: black;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.input-titles {
+    font-family: 'Staatliches', cursive;
+    margin: 5px;
+}
+.login-inputs {
+    margin: 5px;
+}
+.log {
+    margin: 5px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .landing-box {
@@ -104,8 +117,10 @@
 .charley {
     background-image: url('./../assets/Flags/charley.png');
     @include buttons();
+    margin: 0 2.5px;
 }
 .nov {
     background-image: url('./../assets/Flags/november.png');
     @include buttons();
+    margin: 0 2.5px;
 }
