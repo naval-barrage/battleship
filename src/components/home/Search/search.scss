@@ -1,4 +1,12 @@
 @import '../../../variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
+
+.friendInput {
+    p {
+        font-family: 'Staatliches', cursive;
+        margin: 5px 0 0 0;
+    }
+}
 @mixin buttons() {
     background-size: cover;
     color: white;
