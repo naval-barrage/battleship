@@ -73,7 +73,7 @@ class EnemyGrid extends Component {
 
             if (e === 1 || e === 2 || e === 3 || e === 4 || e === 5) {
                 let newGrid1 = this.state.enemyGrid;
-                let val = e
+                let val = this.state.enemyGrid[i1][i2]
                 newGrid1[i1][i2] = 7;
                 let ship = false
                 for (let i = 0; i < this.state.enemyGrid.length; i++) {
@@ -81,12 +81,12 @@ class EnemyGrid extends Component {
                         ship = true
                     }
                 }
-                if (!ship) {
+                if (ship) {
                     Swal.fire({
                         type: 'success',
                         text: 'You hit an enemy ship!',
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 1500
                     })
                     this.setState({
                     enemyGrid: newGrid1,
@@ -98,7 +98,7 @@ class EnemyGrid extends Component {
                         type: 'success',
                         text: 'You sunk an enemy ship!',
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 1500
                     })
                     this.setState({
                         enemyGrid: newGrid1,
@@ -114,7 +114,7 @@ class EnemyGrid extends Component {
                 type: 'warning',
                 text: 'Miss fire!',
                 showConfirmButton: false,
-                timer: 1000
+                timer: 1500
             })
             this.setState({
                 enemyGrid: newGrid,

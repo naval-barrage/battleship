@@ -235,6 +235,12 @@ class YourGrid extends Component {
         newGrid[i1][i2] = 2
         newGrid[i1 + 1][i2] = 2
         this.setState({grid: newGrid})
+        Swal.fire({
+          type: 'success',
+          text: 'Your ships have been placed!',
+          showConfirmButton: false,
+          timer: 1000
+        })
         this.props.changeTurnFn()
         axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
         })
@@ -247,6 +253,12 @@ class YourGrid extends Component {
         newGrid[i1][i2] = 2
         newGrid[i1][i2 + 1] = 2
         this.setState({grid: newGrid})
+        Swal.fire({
+          type: 'success',
+          text: 'Your ships have been placed!',
+          showConfirmButton: false,
+          timer: 1000
+        })
         this.props.changeTurnFn()
         axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
         })

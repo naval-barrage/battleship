@@ -45,7 +45,7 @@ class Gameroom extends Component {
 
     componentDidUpdate(prevState) {
         if (this.state.gameStats !== prevState) {
-            if (this.state.yourTurn && this.state.shipsSet) {
+            if (this.state.yourTurn) {
                 Swal.fire({
                     type: 'warning',
                     text: `${this.state.gameStats.message}`,
