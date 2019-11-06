@@ -111,7 +111,8 @@ class Gameroom extends Component {
             </div>
           ) : (
             <div className="bigGrid">
-                {/* <p>o</p> */}
+                
+                <p>o</p>
               <YourGrid
                 grid={this.state.yourGrid}
                 gameStats={this.state.gameStats}

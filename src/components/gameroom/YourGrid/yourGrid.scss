@@ -72,15 +72,17 @@
 //   display: inline-block;
 //   margin-right: 10px;
 // }
+
 .instructions {
   background-image: url('../../assets/jamestown.jpg');
   height: 30px;
-  width: 100%;
+  width: 98.5%;
   margin: 5px 0 0 0;
   background-size: cover;
   box-sizing: border-box;
   border: 1px solid black;
   display: flex;
+  margin-left: 1.4vw;
 
   .shipset {
     background: chartreuse;
