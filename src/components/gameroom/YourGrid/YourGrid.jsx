@@ -4,6 +4,7 @@ import '../EnemyGrid/enemyGrid.scss'
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import Swal from 'sweetalert2'
 
 class YourGrid extends Component {
   constructor() {
@@ -73,6 +74,12 @@ class YourGrid extends Component {
             .then(res => {
               console.log(res.data);
             });
+          Swal.fire({
+            type: 'success',
+            text: 'Your ships have been placed!',
+            showConfirmButton: false,
+            timer: 1000
+          })
           this.props.changeTurnFn();
           break;
         default:
