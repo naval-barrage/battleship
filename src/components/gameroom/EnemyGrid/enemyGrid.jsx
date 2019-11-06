@@ -181,7 +181,7 @@ render() {
           {/* {mappedyeezy} */}
 
         </div>
-        <div></div>
+       
     </div>
     );
 }

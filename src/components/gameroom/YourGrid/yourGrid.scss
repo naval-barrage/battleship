@@ -19,13 +19,7 @@
 }
 .container {
   height: 70vh;
-  // display: inline-grid ;
-  // width: 40vw;
-
-  // grid-template-rows: auto auto auto;
-
-  // grid-template-columns: auto auto auto;
-  // background-color: #2196F3;
+ 
   padding: 20px;
   // color:red
   width: 600px;
@@ -33,7 +27,8 @@
   grid-gap: 10px;
   grid-template-columns: repeat(10, 50px);
   grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
+  z-index: 10;
 }
 #empty{
   background:blue
@@ -59,21 +54,3 @@
 #miss{
   background: black
 }
-
-
-
-
-//   #container {
-//     display: grid;
-//     grid-gap:-20px;
-//     grid-template-rows: repeat(var(--grid-rows), 1fr);
-//     grid-template-columns: repeat(var(--grid-cols), 1fr);
-//   }
-
-// .cell {
-//   border: 1.5px solid black;
-//   min-width: 40px;
-//   min-height: 40px;
-//   display: inline-block;
-//   margin-right: 10px;
-// }

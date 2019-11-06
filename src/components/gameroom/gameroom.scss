@@ -1,15 +1,40 @@
 @import '../../variables.scss';
 
+
 .Gameroom {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     grid-template-columns: 2fr 2fr;
     grid-row-gap: 1%;
     grid-column-gap: 5%;
     width: auto;    
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
 }
+.leaderd{
+    display: flex;
+    height: 10%;
+    width: 30%;;
+    // margin-right: 0px;
+    margin: auto auto;
+    
+}
+// .bigGrid{
+//     color: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
+//     width: auto;    
+//     height: 100vh;
+//     width: 100%;
+//     background: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .bigGrid > p {
+//     display: none;
+// }
 
 .gameroom-blurred {
     animation-name: gameroom-blur;
@@ -57,6 +82,32 @@
     box-sizing: border-box;
     border: 1px solid black;
 }
+
+.StartGameroom{
+    width: auto;    
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
+}
+.yeet  {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    display: grid;
+  
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  
+    column-gap: 10px;
+  
+    row-gap: 10px;
+  
+    justify-content: center;
+    z-index: 10;
+  
+    // width: 100px;
+  
+    // margin: auto auto;
+  }
+
 
 
 
