@@ -134,24 +134,36 @@ class Gameroom extends Component {
             </div>
           )
         ) : (
-          <div className="Gameroom gameroom-blurred">
-            <EnemyGrid
-              grid={this.state.enemyGrid}
-              updateEnemyGridFn={this.updateEnemyGrid}
-              gameStats={this.state.gameStats}
-              changeTurnFn={this.changeTurn}
-            />
-            <YourGrid
-              grid={this.state.yourGrid}
-              gameStats={this.state.gameStats}
-              changeTurnFn={this.changeTurn}
-            />
-            <LeaderBoard
-              friendStats={this.state.friendStats}
-              gameStats={this.state.gameStats}
-            />
-            <Ships />
-          </div>
+            // this.state.shipsSet ? (
+                <div className="Gameroom gameroom-blurred">
+                    <EnemyGrid
+                    grid={this.state.enemyGrid}
+                    updateEnemyGridFn={this.updateEnemyGrid}
+                    gameStats={this.state.gameStats}
+                    changeTurnFn={this.changeTurn}
+                    />
+                    <YourGrid
+                    grid={this.state.yourGrid}
+                    gameStats={this.state.gameStats}
+                    changeTurnFn={this.changeTurn}
+                    />
+                    <LeaderBoard
+                    friendStats={this.state.friendStats}
+                    gameStats={this.state.gameStats}
+                    />
+                    <Ships />
+                </div>
+            // ) : (
+            //     <div className="bigGrid gameroom-blurred">
+                
+            //     <p>o</p>
+            //   <YourGrid
+            //     grid={this.state.yourGrid}
+            //     gameStats={this.state.gameStats}
+            //     changeTurnFn={this.changeTurn}
+            //   />
+            // </div>
+            // )
         )}
       </div>
     );

@@ -44,26 +44,50 @@
   grid-auto-flow: row;
 }
 #empty{
-  background:blue
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #sub{
-  background: blue;
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #destroyer{
-  background:blue
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #cruiser{
-  background:blue
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #battleship{
-  background:blue
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #carrier{
-  background:blue
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
 }
 #hit{
-  background:rgb(201, 14, 14)
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  img {
+    width: 70%;
+    height: auto;
+  }
 }
 #miss{
-  background: black
+  background-color: #007ea7;
+  background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  img {
+    width: 70%;
+    height: auto;
+  }
 }
