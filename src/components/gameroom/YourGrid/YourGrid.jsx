@@ -112,7 +112,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'battleship'})
       } else {
-      alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place carrier here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     } else {
       
@@ -125,7 +130,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'battleship'})
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place carrier here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }
@@ -148,7 +158,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'cruiser'})
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place battleship here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     } else {
       
@@ -160,7 +175,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'cruiser'})
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place battleship here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }
@@ -184,7 +204,12 @@ class YourGrid extends Component {
         this.setState({ship: 'submarine'})
   
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place cruiser here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     } else {
       
@@ -195,7 +220,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'submarine'})
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place cruiser here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }
@@ -214,7 +244,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'destroyer'})
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place submarine here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     } else {
       
@@ -225,7 +260,12 @@ class YourGrid extends Component {
         this.setState({grid: newGrid})
         this.setState({ship: 'destroyer'})
       }  else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place submarine here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }
@@ -247,7 +287,12 @@ class YourGrid extends Component {
         axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
         })
       } else {
-        alert('cannot place ship here')
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place destroyer here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     } else {
       
@@ -265,7 +310,12 @@ class YourGrid extends Component {
         axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
         })
       }  else {
-        alert('cannot place ship here')  
+        Swal.fire({
+          type: 'error',
+          text: 'Cannot place destroyer here!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }
@@ -326,7 +376,8 @@ class YourGrid extends Component {
 
     return (
       <div className='outerboi'>
-        <div className='instructions'>
+        {this.state.shipsPlaced ? (
+          <div className='instructions'>
           <div className='shipset'>
             <p>{`Set the ${this.state.ship.charAt(0).toUpperCase() + this.state.ship.slice(1)}`}</p>
           </div>
@@ -375,11 +426,15 @@ class YourGrid extends Component {
             </div>
           ) : null}
         </div>
-
+        ) : (
         <div onClick={this.nice} className="container">
           {mappedGrid}
           {/* {mappedyeezy} */}
         </div>
+        )}
+        
+
+        
       </div>
     );
   }

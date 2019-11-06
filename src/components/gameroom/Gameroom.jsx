@@ -136,6 +136,7 @@ class Gameroom extends Component {
         ) : (
             // this.state.shipsSet ? (
                 <div className="Gameroom gameroom-blurred">
+                    
                     <EnemyGrid
                     grid={this.state.enemyGrid}
                     updateEnemyGridFn={this.updateEnemyGrid}
