@@ -22,6 +22,7 @@
     @include buttons();
     background-image: url('../assets/Flags/xray.jpg');
     height: 30px;
+    cursor: pointer;
 }
 .logout-button {
     background-image: url('../assets/Flags/Romeo.jpg');
@@ -32,6 +33,7 @@
     border-color: black;
     height: 30px;
     width: 90px;
+    cursor: pointer;
 }
 .profile {
     height: 8vh;
@@ -41,6 +43,9 @@
     display: flex;
     box-sizing: border-box;
     border: 1px solid black;
+    display: flex;
+        justify-content: center;
+        align-items: center;
     img {
         height: 30px;
         width: 30px;

@@ -10,7 +10,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 // import Swal from 'sweetalert2'
 import Alert from '../Alert/Alert'
-import {toast, ToastContainer} from 'react-toastify'
+import {toast} from 'react-toastify'
 
 class Gameroom extends Component {
     constructor() {
