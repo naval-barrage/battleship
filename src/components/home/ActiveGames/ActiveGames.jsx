@@ -27,10 +27,10 @@ class ActiveGames extends Component {
     render() {
         return(
             <div className='ActiveGames'>
-                <div>Active Games list:</div>
+                <p>Active Games list:</p>
                 <div className='active'>
                     {this.state.activeGames.length < 1 ? (
-                        <div>no active games</div>
+                        <p>no active games</p>
                         ) : (
                 <div>
                 {

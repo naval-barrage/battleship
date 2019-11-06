@@ -170,14 +170,16 @@ class Login extends Component {
               <div className="input-titles">Username</div>
               <div>
                 <input
-                  onChange={e => this.handleChange(e, "username")}
-                  type="text"
+                className='login-inputs'
+                onChange={e => this.handleChange(e, "username")}
+                type="text"
                   placeholder="Username"
-                />
+                  />
               </div>
               <div className="input-titles">Password</div>
               <div>
                 <input
+                  className='login-inputs'
                   onChange={e => this.handleChange(e, "password")}
                   type="password"
                   placeholder="Password"
@@ -202,24 +204,26 @@ class Login extends Component {
           <div className="login-box">
             <div className="input-titles">Create a Username</div>
             <input
+              className='login-inputs'
               onChange={e => this.handleChange(e, "email")}
               type="text"
               placeholder="Email"
-            />
+              />
             <div>
               <input
-                onChange={e => this.handleChange(e, "username")}
-                type="text"
-                placeholder="Username"
-                />
+              className='login-inputs'
+              onChange={e => this.handleChange(e, "username")}
+              type="text"
+              placeholder="Username"
+              />
             </div>
             <div className="input-titles">Set a Password</div>
             <div>
               <input
-                onChange={e => this.handleChange(e, "password")}
-                type="password"
-                placeholder="Password"
-                />
+              onChange={e => this.handleChange(e, "password")}
+              type="password"
+              placeholder="Password"
+              />
             </div>
             <input
               onChange={e => this.handleChange(e, "password2")}
@@ -232,8 +236,8 @@ class Login extends Component {
                   className="nov"
                   onClick={() => this.toggleChange()}
                   >
-                  Back to Login
-                </button>
+                  Back to login
+                  </button>
                 <button className="charley" onClick={() => this.register()}>
                   Register
                 </button>

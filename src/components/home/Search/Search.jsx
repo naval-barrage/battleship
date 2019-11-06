@@ -39,7 +39,7 @@ export default class Search extends Component {
         return(
             <div className='Search'>
                 <div className="friendInput">
-                Search For Friends:
+                <p>Search For Friends:</p>
                 <div className="searchInput">
                     <input onChange={(e) => this.handleChange(e, "username")} type="text" placeholder="Search"/>
                     <button className='zulu' onClick={() => this.handleSearch()}>Search</button>

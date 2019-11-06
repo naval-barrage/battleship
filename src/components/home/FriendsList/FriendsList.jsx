@@ -30,7 +30,7 @@ class FriendsList extends Component {
         return(
             <div className='FriendsList'>
                 <div className="FriendsBox">
-                Your Friends:
+                <p>Your Friends:</p>
                 <div className="listFriends">
                 {
                     this.state.friendsList.length ? (
