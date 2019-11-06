@@ -27,6 +27,7 @@
     border-color: black;
     height: auto;
     width: 90px;
+    cursor: pointer;
 }
 .outer {
     background-image: url('../assets/Flags/howtopic.png');
@@ -36,6 +37,7 @@
 .howto {
     background-image: url('../assets/Flags/howtopic.png');
     background-size: cover;
+    background-repeat: no-repeat;
     margin: 9% 0 0 12%;
     width: 65%;
     height: auto;
