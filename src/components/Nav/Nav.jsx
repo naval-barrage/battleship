@@ -44,14 +44,13 @@ class Nav extends Component {
         this.props.history.push('/')
     }
     
-
     render() {
         return(
         <div className='Nav'>
             <Link to='/home'><button className='home-button'><i class="fas fa-anchor"></i>Control Room</button></Link>
             <div className='profile'>
                     <img src={this.state.userPic} alt="A boat to show ranking"/>
-                    <div className='user'>{`${this.state.username}`}</div>
+                    <div className='user'>{`${this.state.username.charAt(0).toUpperCase() + this.state.username.slice(1)}`}</div>
                 <button onClick={() => this.logout()} className='logout-button'><i class="fas fa-sign-out-alt"></i>Logout</button>
             </div>
         </div>
