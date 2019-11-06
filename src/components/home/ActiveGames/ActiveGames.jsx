@@ -1,4 +1,3 @@
-import swal from 'sweetalert2'
 import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import './activeGames.scss'
@@ -21,7 +20,7 @@ class ActiveGames extends Component {
     }
     goToGame(gameroom_id) {
         axios.get(`/api/game/${gameroom_id}`).then(res => {
-            swal.fire({type: 'success' , text: 'Game On!' , showConfirmButton: false, timer: 1000})
+            // swal.fire({type: 'success' , text: 'Game On!' , showConfirmButton: false, timer: 1000})
             this.props.history.push(`/gameroom/${gameroom_id}`)
         })
     }

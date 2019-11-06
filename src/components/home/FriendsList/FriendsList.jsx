@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import './friendsList.scss'
 import axios from 'axios'
 import { connect } from "react-redux";
-import swal from 'sweetalert2'
 import {withRouter} from 'react-router-dom'
 
 class FriendsList extends Component {
@@ -22,7 +21,7 @@ class FriendsList extends Component {
     }
     handleStartGame(guest_id) {
         axios.post(`/api/games/new/${+guest_id}`).then(res => {
-            swal.fire({type: 'success' , text: 'Game Started' , showConfirmButton: false, timer: 1000})
+            // swal.fire({type: 'success' , text: 'Game Started' , showConfirmButton: false, timer: 1000})
             this.props.history.push(`/gameroom/${res.data.gameroom_id}`)
         })
     }
