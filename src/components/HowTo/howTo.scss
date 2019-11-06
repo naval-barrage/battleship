@@ -2,7 +2,7 @@
 
 .HowTo {
     background-image: url('../assets//howto.jpg');
-    height: 110vh;
+    height: 100vh;
     width: 100%;
     background-size: cover;
 }
@@ -10,8 +10,16 @@
     display: flex;
     justify-content: space-evenly;
 }
-.box-howto {
-    max-width: 400px;
+.box-howto-1 {
+    width: 35%;
+    height: auto;
+    background: rgba(128, 128, 128, 0.767);
+    margin: 20px;
+    padding: 10px;
+}
+.box-howto-2 {
+    width: 35%;
+    height: auto;
     background: rgba(128, 128, 128, 0.767);
     margin: 20px;
     padding: 10px;

@@ -24,11 +24,13 @@
 .zulu {
     background-image: url('../../assets/Flags/zulu.png');
     @include buttons();
+    cursor: pointer;
 }
 .kilo {
     background-image: url('../../assets/Flags/kilo.webp');
     font-size: 12px;
     @include buttons();
+    cursor: pointer;
 }
 .searchResults {
     width: 100%;
