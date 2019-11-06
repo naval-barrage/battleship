@@ -48,6 +48,11 @@ class Gameroom extends Component {
         })
     }
     
+    changeTurn = ()=>{
+        this.setState({
+            yourTurn: false
+        })
+    }
 
     getGameInfo() {
         axios.get(`/api/game/${+this.props.match.params.gameroom_id}`).then(res => {
