@@ -21,20 +21,20 @@
     margin: auto auto;
     
 }
-// .bigGrid{
-//     color: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
-//     width: auto;    
-//     height: 100vh;
-//     width: 100%;
-//     background: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-// }
-// .bigGrid > p {
-//     display: none;
-// }
+.bigGrid{
+    color: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
+    width: auto;    
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bigGrid > p {
+    display: none;
+}
 
 .gameroom-blurred {
     animation-name: gameroom-blur;
