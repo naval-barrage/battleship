@@ -28,6 +28,10 @@ class EnemyGrid extends Component {
     }
 
     componentDidMount() {
+        this.setState({enemyGrid: this.props.grid})
+        if (this.props.gameStats.turn === this.props.user.user.user_id) {
+            this.setState({isTurn: true})
+        }
     }
 
     componentDidUpdate(prevProps) {
