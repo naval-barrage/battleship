@@ -11,6 +11,11 @@
 .FriendOnline {
     display: flex;
     justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.075), rgba(128, 128, 128, 0.171));
+    height: 30px;
+    width: auto;
+    margin: 0 2.5px;
+    padding: 3px;
     img {
         height: 30px;
         width: 30px;
@@ -37,7 +42,7 @@
 }
 .listFriends {
     overflow-y: scroll;
-    height: 150px;
+    height: 160px;
     padding: 5px 15px;
     margin: 10px 0;
 }
