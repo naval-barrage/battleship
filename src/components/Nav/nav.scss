@@ -17,6 +17,12 @@
     background-image: url('../assets/Flags/navbarflag.jpg');
     box-sizing: border-box;
     border: 1px solid black;
+    img {
+        height: 30px;
+        width: 30px;
+        clip-path: circle(43%);
+        font-size: 7px;
+    }
 }
 .home-button {
     @include buttons();

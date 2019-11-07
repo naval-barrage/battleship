@@ -21,7 +21,7 @@ module.exports = {
       return res.sendStatus(503);
     });
 
-    req.session.user = { username, userId: userId[0].user_id };
+    req.session.user = { username, user_id: userId[0].user_id };
     req.session.loggedIn = true;
     res
       .status(201)
