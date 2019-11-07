@@ -17,7 +17,7 @@ class HoWTo extends Component {
                 {!this.props.loggedIn
             ? (
             <div>
-                <Link to='/'><button>Back</button></Link>
+                <Link to='/'><button className='HowTo-button'>Back</button></Link>
             </div>
             ) : (
                 <div>
