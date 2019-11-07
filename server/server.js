@@ -9,8 +9,9 @@ const authCtrl = require('./controllers/authController')
 const socialCtrl = require('./controllers/socialController')
 const gameCtrl = require('./controllers/gameController')
 
-const app = express()
 
+const app = express()
+app.use(express.static(`${__dirname}/../build`))
 app.use(express.json())
 app.use(session({
     resave: false,
@@ -41,7 +42,6 @@ app.delete('/api/games/end/:gameroom_id/:winner_id', gameCtrl.endGame)
 app.get('/api/game/:gameroom_id', gameCtrl.getGame)
 app.put('/api/game/:gameroom_id/:user_id', gameCtrl.updateGame)
 app.put('/api/game/start/:gameroom_id/:user_id', gameCtrl.setShips)
-
 
 
 // DB STUFF
