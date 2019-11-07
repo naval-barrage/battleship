@@ -1,17 +1,26 @@
 @import '../../variables.scss';
-
+.wut{
+    display: flex;
+    flex-direction: center;
+    padding-left: 80px;
+    margin-left: 150px
+}
+.grid1{
+    margin-left: 150px
+}
 
 .Gameroom {
     display: flex;
     // flex-direction: column;
     flex-wrap: wrap;
-    // justify-content: space-between;
-    grid-template-columns: 2fr 2fr;
-    grid-row-gap: 1%;
-    grid-column-gap: 5%;
-    width: auto;    
+    
+    // justify-content: space-around;
+    // grid-template-columns: 2fr 2fr;
+    // grid-row-gap: 1%;
+    // grid-column-gap: 5%;
+    // width: auto;    
     height: 100vh;
-    width: 100%;
+    min-width: 100vw;
     background: linear-gradient(50deg, lightgray, rgb(59, 56, 56));
 }
 .leaderd{

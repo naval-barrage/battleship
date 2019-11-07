@@ -31,6 +31,7 @@ class YourGrid extends Component {
 
   componentDidMount() {
     // this.setShips()
+    this.setState({ grid: this.props.grid })
   }
 
   componentDidUpdate(prevProps) {

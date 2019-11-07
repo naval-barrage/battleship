@@ -1,0 +1,43 @@
+// bobbyGrid
+"grid": [
+    [6,0,0,6,0,0,0,0,6,0],
+    [0,0,0,4,4,7,7,6,0,0],
+    [0,6,0,0,6,0,6,0,0,0],
+    [0,0,0,6,0,0,7,6,0,6],
+    [0,0,6,0,0,0,7,0,0,0],
+    [7,6,0,0,0,6,7,0,0,0],
+    [7,0,0,6,7,7,7,6,0,6],
+    [7,0,0,0,0,0,6,0,0,6],
+    [5,0,6,0,6,0,6,0,0,6],
+    [7,6,0,6,0,0,2,2,0,0]
+],
+"message": "Enemy sunk your ship!"
+
+
+// skylarGrid
+"grid": [
+    [7,7,7,5,7,6,0,0,6,7],
+    [0,0,6,0,0,6,6,0,0,7],
+    [0,6,0,0,6,0,0,0,0,7],
+    [6,0,0,6,6,0,6,0,0,0],
+    [6,0,0,0,0,6,7,0,6,0],
+    [7,7,7,6,0,0,7,0,6,0],
+    [0,0,6,0,6,0,7,0,0,6],
+    [0,6,0,0,0,0,7,0,0,0],
+    [0,6,7,7,6,0,6,0,6,6],
+    [0,0,0,0,6,0,6,0,6,0]
+],
+"message": "Enemy hit your ship!"
+
+// postman endpoints
+http://localhost:8080/api/game/132/9/?turn_result=miss&ship_sunk=false
+http://localhost:8080/api/game/132/10/?turn_result=miss&ship_sunk=false
+
+
+// sql queries
+
+UPDATE gameroom
+SET total_turns = 79, host_hits = 16, guest_hits = 12, host_misses = 24, guest_misses = 28, host_ships_sunk = 4, guest_ships_sunk = 4, ships_placed = true
+WHERE gameroom_id = 132;
+
+SELECT * FROM gameroom;

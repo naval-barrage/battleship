@@ -14,7 +14,8 @@ export default class Search extends Component {
     }
     handleChange = (e, key) => {
         this.setState({
-            [key]: e.target.value
+            [key]: e.target.value,
+            toggleSearch: false
         });
     };
     handleSearch() {
@@ -48,7 +49,7 @@ export default class Search extends Component {
                 {this.state.toggleSearch ? (
                     <div className="searchResults">
                     {
-                        this.state.searchResults.length ? (
+                        this.state.toggleSearch ? (
                             this.state.searchResults.map(searchResults => {
                                 return (
                                     <div className='results'>
