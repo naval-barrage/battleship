@@ -265,6 +265,10 @@ class YourGrid extends Component {
           timer: 1000
         })
         this.props.changeTurnFn()
+        if(this.props.gameStats.host_id !== this.props.user.user.user_id){
+          this.props.shipsSetFn()
+          this.forceUpdate()
+        }
         axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
         })
       } else {

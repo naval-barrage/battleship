@@ -42,9 +42,18 @@ class Gameroom extends Component {
     changeTurn = () => {
         this.setState({yourTurn: false})
     }
+    changeShipsSet = ()=>{
+      this.setState({
+        shipsSet: true
+      })
+      
+    }
 
-    componentDidUpdate(prevState) {
-        if (this.state.gameStats !== prevState) {
+    componentDidUpdate(prevProps, prevState) {
+      if (prevState.shipsSet !== this.state.shipsSet) {
+        this.changeShipsSet();
+      }
+        if (this.state.gameStats !== prevState.gameStats) {
             if (this.state.yourTurn) {
                 Swal.fire({
                     type: 'warning',
@@ -91,8 +100,9 @@ class Gameroom extends Component {
     }
 
  
-
-  render() {
+    
+    render() {
+      
     return (
       <div>
         <Nav />
@@ -100,6 +110,7 @@ class Gameroom extends Component {
         {this.state.yourTurn ? (
           this.state.shipsSet ? (
             <div className="Gameroom">
+              
                 <EnemyGrid
                   grid={this.state.enemyGrid}
                   updateEnemyGridFn={this.updateEnemyGrid}
@@ -110,18 +121,23 @@ class Gameroom extends Component {
                   grid={this.state.yourGrid}
                   gameStats={this.state.gameStats}
                   changeTurnFn={this.changeTurn}
+                  shipsSetFn={this.changeShipsSet}
+                  
                   />
               
               <div className='leaderd'>
                 <LeaderBoard
                   friendStats={this.state.friendStats}
                   gameStats={this.state.gameStats}
+                  shipsSetFn={this.changeShipsSet}
+
                 />
                 <Ships />
               </div>
             </div>
           ) : (
             <div className="bigGrid">
+              {/* {console.log('true/false')} */}
                 <p>o</p>
               <YourGrid
                 grid={this.state.yourGrid}
@@ -131,25 +147,42 @@ class Gameroom extends Component {
             </div>
           )
         ) : (
-                <div className="Gameroom gameroom-blurred">
-                    
-                    <EnemyGrid
-                    grid={this.state.enemyGrid}
-                    updateEnemyGridFn={this.updateEnemyGrid}
-                    gameStats={this.state.gameStats}
-                    changeTurnFn={this.changeTurn}
-                    />
-                    <YourGrid
-                    grid={this.state.yourGrid}
-                    gameStats={this.state.gameStats}
-                    changeTurnFn={this.changeTurn}
-                    />
-                    <LeaderBoard
-                    friendStats={this.state.friendStats}
-                    gameStats={this.state.gameStats}
-                    />
-                    <Ships />
-                </div>
+          this.state.shipsSet ? (
+            
+            
+            // false/true ( 2 boards with blur )
+            <div className='Gameroom gameroom-blurred'>
+            {/* {console.log('false/true')} */}
+                <EnemyGrid
+                grid={this.state.enemyGrid}
+                updateEnemyGridFn={this.updateEnemyGrid}
+                gameStats={this.state.gameStats}
+                changeTurnFn={this.changeTurn}
+                />
+                <YourGrid
+                grid={this.state.yourGrid}
+                gameStats={this.state.gameStats}
+                changeTurnFn={this.changeTurn}
+                />
+                <LeaderBoard
+                friendStats={this.state.friendStats}
+                gameStats={this.state.gameStats}
+                />
+                <Ships />
+            </div>
+        ) : (
+          // false/false ( 1 board with blur )
+          <div className='bigGrid gameroom-blurred'>
+          {/* {console.log('false/false')} */}
+            <p>o</p>
+          <YourGrid
+            grid={this.state.yourGrid}
+            gameStats={this.state.gameStats}
+            changeTurnFn={this.changeTurn}
+          />
+        </div>
+        )
+
         )}
       </div>
     );
