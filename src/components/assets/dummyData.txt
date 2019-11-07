@@ -30,8 +30,8 @@
 "message": "Enemy hit your ship!"
 
 // postman endpoints
-http://localhost:8080/api/game/132/9/?turn_result=miss&ship_sunk=false
 http://localhost:8080/api/game/132/10/?turn_result=miss&ship_sunk=false
+http://localhost:8080/api/game/132/9/?turn_result=miss&ship_sunk=false
 
 
 // sql queries
@@ -41,3 +41,6 @@ SET total_turns = 79, host_hits = 16, guest_hits = 12, host_misses = 24, guest_m
 WHERE gameroom_id = 132;
 
 SELECT * FROM gameroom;
+
+DELETE FROM friendship 
+WHERE friend1 = 10 AND friend2 = 8;

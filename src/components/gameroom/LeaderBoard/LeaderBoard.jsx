@@ -9,14 +9,14 @@ class LeaderBoard extends Component {
         this.state = {
             wins: 0,
             losses: 0,
-                myHits: 0,
-                enemyHits: 0,
-                myMisses: 0,
-                enemyMisses: 0,
-                myShipsSunk: 0,
-                enemyShipsSunk: 0,
-                turn: 0,
-                startingTime: 0
+            myHits: 0,
+            enemyHits: 0,
+            myMisses: 0,
+            enemyMisses: 0,
+            myShipsSunk: 0,
+            enemyShipsSunk: 0,
+            turn: 0,
+            startingTime: 0
         }
     }
 
@@ -112,8 +112,8 @@ class LeaderBoard extends Component {
                 </div>
                 <div className="game-stats">
                     <h4>Game Stats</h4>
-                    <h5>Turn: {this.state.turn}</h5>
-                    <p>My Hits: {this.state.myHits}</p>
+                    <h5>Turn: {this.props.gameStats.turn}</h5>
+                    <p>My Hits: {this.props.gameStats.host_hits}</p>
                     <p>Enemy Hits: {this.state.enemyHits}</p>
                     <p>My Misses: {this.state.myMisses}</p>
                     <p>Enemy Misses: {this.state.enemyMisses}</p>
