@@ -266,8 +266,8 @@ class YourGrid extends Component {
         })
         this.props.changeTurnFn()
         if(this.props.gameStats.host_id !== this.props.user.user.user_id){
-          this.props.shipsSetFn()
-          this.forceUpdate()
+          // this.props.shipsSetFn()
+          // this.forceUpdate()
         }
         axios.put(`/api/game/start/${this.props.gameStats.gameroom_id}/${this.props.user.user.user_id}`, {grid: this.state.grid}).then(res => {
         })
@@ -402,6 +402,7 @@ class YourGrid extends Component {
           ) : null}
         </div>
           ) : null  }
+          <p className='grid-names'>Your Grid</p>
         <div onClick={this.nice} className="container">
           {mappedGrid}
         </div>

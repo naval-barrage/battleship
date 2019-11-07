@@ -66,7 +66,7 @@ class EnemyGrid extends Component {
             })
             axios.put(`/api/users/img/${this.props.user.user.user_id}`).then(res => {
             })
-            alert('you won!')
+            Swal.fire({type: 'success', text: 'Congratulations Commander. You won', showConfirmButton: false, timer: 1500})
             this.props.history.push('/home')
             }
         
@@ -219,6 +219,7 @@ render() {
 
     return (
     <div>
+        <p className='grid-names'>Enemy Grid</p>
         <div onClick={this.nice} className="container">
         {mappedGrid}
           {/* {mappedyeezy} */}

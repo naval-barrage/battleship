@@ -19,16 +19,29 @@
 
   // margin: auto auto;
 }
+.grid-names{
+  color:whitesmoke;
+  font-size: 30px;
+  text-decoration-line: underline;
+  display: flex;
+  justify-content: center;
+  padding-left: 350px;
+  
+
+}
 .container {
-  height: 70vh;
+  height: 40vh;
+  margin-left: 200px;
+  
+
  
-  padding: 20px;
+  // padding: 20px;
   // color:red
   width: 600px;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px;
+  grid-template-columns: repeat(10, 60px);
+  grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
   grid-auto-flow: row;
   z-index: 10;
 }

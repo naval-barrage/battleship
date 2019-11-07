@@ -121,7 +121,7 @@ class Gameroom extends Component {
                   grid={this.state.yourGrid}
                   gameStats={this.state.gameStats}
                   changeTurnFn={this.changeTurn}
-                  shipsSetFn={this.changeShipsSet}
+                  // shipsSetFn={this.changeShipsSet}
                   
                   />
               
@@ -129,7 +129,7 @@ class Gameroom extends Component {
                 <LeaderBoard
                   friendStats={this.state.friendStats}
                   gameStats={this.state.gameStats}
-                  shipsSetFn={this.changeShipsSet}
+                  // shipsSetFn={this.changeShipsSet}
 
                 />
                 <Ships />
