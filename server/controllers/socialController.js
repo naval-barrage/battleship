@@ -112,9 +112,12 @@ module.exports = {
     },
 
     async getUser(req, res) {
+        console.log('test')
         const db = req.app.get('db')
         const {user_id} = req.session.user
+        console.log(user_id)
         let user = await db.get_user(user_id)
+        console.log(user)
         res.status(200).send(user)
     }
 }

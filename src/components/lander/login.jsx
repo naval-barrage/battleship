@@ -78,8 +78,19 @@ class Login extends Component {
       axios
         .post("/auth/register", { username, email, password: password2 })
         .then(res => {
-          this.props.updateUser(res.data.user);
+          if (res.data.user) {
+            console.log(res.data)
+            let user = {
+              user: {
+                user_id: res.data.user.user_id,
+                username: res.data.user.username
+              },
+              loggedIn: res.data.loggedIn
+            };
+          this.props.updateUser(user);
           this.props.history.push("/home");
+          // console.log(this.props.user.user)
+          }
         });
     }
   }
