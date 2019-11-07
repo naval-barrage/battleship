@@ -9,100 +9,86 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 // import Swal from 'sweetalert2'
-import Alert from '../Alert/Alert'
-import Swal from 'sweetalert2'
-
-
+import Alert from "../Alert/Alert";
+import Swal from "sweetalert2";
 
 class Gameroom extends Component {
-    constructor() {
-        super()
-        this.state = {
-            // 0 = empty
-            // 1 = submarine(3)
-            // 2 = destroyer(2)
-            // 3 = cruiser(3)
-            // 4 = battleship(4)
-            // 5 = carrier(5)
-            // 6 = miss
-            // 7 = hit
-            yourGrid: [],
-            enemyGrid: [],
-            friendStats: {},
-            gameStats: {},
-            yourTurn: false,
-            shipsSet: false
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      // 0 = empty
+      // 1 = submarine(3)
+      // 2 = destroyer(2)
+      // 3 = cruiser(3)
+      // 4 = battleship(4)
+      // 5 = carrier(5)
+      // 6 = miss
+      // 7 = hit
+      yourGrid: [],
+      enemyGrid: [],
+      friendStats: {},
+      gameStats: {},
+      yourTurn: false,
+      shipsSet: false
+    };
+  }
 
-    componentDidMount() {
-        this.getGameInfo()
-    }
+  componentDidMount() {
+    this.getGameInfo();
+  }
 
-    changeTurn = () => {
-        this.setState({yourTurn: false})
-    }
-    changeShipsSet = ()=>{
-      this.setState({
-        shipsSet: true
-      })
-      
-    }
+  changeTurn = () => {
+    this.setState({ yourTurn: false });
+  };
 
-    componentDidUpdate(prevProps, prevState) {
-      if (prevState.shipsSet !== this.state.shipsSet) {
-        this.changeShipsSet();
+  componentDidUpdate(prevState) {
+    if (this.state.gameStats !== prevState) {
+      if (this.state.yourTurn) {
+        Swal.fire({
+          type: "warning",
+          text: `${this.state.gameStats.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
-        if (this.state.gameStats !== prevState.gameStats) {
-            if (this.state.yourTurn) {
-                Swal.fire({
-                    type: 'warning',
-                    text: `${this.state.gameStats.message}`,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-        }
     }
-    
-    changeTurn = ()=>{
+  }
+
+  changeTurn = () => {
+    this.setState({
+      yourTurn: false
+    });
+  };
+
+  getGameInfo() {
+    axios.get(`/api/game/${+this.props.match.params.gameroom_id}`).then(res => {
+      if (res.data.gameroom.host_id === this.props.user.user.user_id) {
         this.setState({
-            yourTurn: false
-        })
-    }
+          yourGrid: res.data.game.host,
+          enemyGrid: res.data.game.guest,
+          friendStats: res.data.friendship,
+          gameStats: res.data.gameroom,
+          shipsSet: res.data.gameroom.ships_placed
+        });
+        if (res.data.gameroom.turn === this.props.user.user.user_id) {
+          this.setState({ yourTurn: true });
+        }
+      } else {
+        this.setState({
+          yourGrid: res.data.game.guest,
+          enemyGrid: res.data.game.host,
+          friendStats: res.data.friendship,
+          gameStats: res.data.gameroom,
+          shipsSet: res.data.gameroom.ships_placed
+        });
+        if (res.data.gameroom.turn === this.props.user.user.user_id) {
+          this.setState({ yourTurn: true });
+        }
+      }
+    });
+  }
 
-    getGameInfo() {
-        axios.get(`/api/game/${+this.props.match.params.gameroom_id}`).then(res => {
-            if (res.data.gameroom.host_id === this.props.user.user.user_id) {
-                this.setState({
-                    yourGrid: res.data.game.host,
-                    enemyGrid: res.data.game.guest,
-                    friendStats: res.data.friendship,
-                    gameStats: res.data.gameroom,
-                    shipsSet: res.data.gameroom.ships_placed
-                })
-                if (res.data.gameroom.turn === this.props.user.user.user_id) {
-                    this.setState({yourTurn: true})
-                }
-            } else {
-                this.setState({
-                    yourGrid: res.data.game.guest,
-                    enemyGrid: res.data.game.host,
-                    friendStats: res.data.friendship,
-                    gameStats: res.data.gameroom,
-                    shipsSet: res.data.gameroom.ships_placed
-                })
-                if (res.data.gameroom.turn === this.props.user.user.user_id) {
-                    this.setState({yourTurn: true})
-                }
-            }
-        })
-    }
-
- 
-    
-    render() {
-      
+  render() {
     return (
       <div>
         <Nav />
@@ -110,35 +96,33 @@ class Gameroom extends Component {
         {this.state.yourTurn ? (
           this.state.shipsSet ? (
             <div className="Gameroom">
-              
+              <div className='grid1'>
                 <EnemyGrid
                   grid={this.state.enemyGrid}
                   updateEnemyGridFn={this.updateEnemyGrid}
                   gameStats={this.state.gameStats}
                   changeTurnFn={this.changeTurn}
                 />
+              </div>
+              <div className= 'wut'>
                 <YourGrid
                   grid={this.state.yourGrid}
                   gameStats={this.state.gameStats}
                   changeTurnFn={this.changeTurn}
-                  shipsSetFn={this.changeShipsSet}
-                  
-                  />
-              
-              <div className='leaderd'>
+                />
+              </div>
+
+              <div className="leaderd">
                 <LeaderBoard
                   friendStats={this.state.friendStats}
                   gameStats={this.state.gameStats}
-                  shipsSetFn={this.changeShipsSet}
-
                 />
                 <Ships />
               </div>
             </div>
           ) : (
             <div className="bigGrid">
-              {/* {console.log('true/false')} */}
-                <p>o</p>
+              <p>o</p>
               <YourGrid
                 grid={this.state.yourGrid}
                 gameStats={this.state.gameStats}
@@ -147,42 +131,28 @@ class Gameroom extends Component {
             </div>
           )
         ) : (
-          this.state.shipsSet ? (
-            
-            
-            // false/true ( 2 boards with blur )
-            <div className='Gameroom gameroom-blurred'>
-            {/* {console.log('false/true')} */}
+          <div className="Gameroom gameroom-blurred">
+            <div className='grid1'>
                 <EnemyGrid
-                grid={this.state.enemyGrid}
-                updateEnemyGridFn={this.updateEnemyGrid}
-                gameStats={this.state.gameStats}
-                changeTurnFn={this.changeTurn}
+                  grid={this.state.enemyGrid}
+                  updateEnemyGridFn={this.updateEnemyGrid}
+                  gameStats={this.state.gameStats}
+                  changeTurnFn={this.changeTurn}
                 />
+              </div>
+              <div className= 'wut'>
                 <YourGrid
-                grid={this.state.yourGrid}
-                gameStats={this.state.gameStats}
-                changeTurnFn={this.changeTurn}
+                  grid={this.state.yourGrid}
+                  gameStats={this.state.gameStats}
+                  changeTurnFn={this.changeTurn}
                 />
-                <LeaderBoard
-                friendStats={this.state.friendStats}
-                gameStats={this.state.gameStats}
-                />
-                <Ships />
-            </div>
-        ) : (
-          // false/false ( 1 board with blur )
-          <div className='bigGrid gameroom-blurred'>
-          {/* {console.log('false/false')} */}
-            <p>o</p>
-          <YourGrid
-            grid={this.state.yourGrid}
-            gameStats={this.state.gameStats}
-            changeTurnFn={this.changeTurn}
-          />
-        </div>
-        )
-
+              </div>
+            <LeaderBoard
+              friendStats={this.state.friendStats}
+              gameStats={this.state.gameStats}
+            />
+            <Ships />
+          </div>
         )}
       </div>
     );
