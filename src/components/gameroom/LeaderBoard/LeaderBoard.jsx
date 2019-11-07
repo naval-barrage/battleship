@@ -62,7 +62,41 @@ class LeaderBoard extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        if (this.props.friendStats.friend1 === this.props.user.user.user_id) {
+            this.setState({
+                wins: this.props.friendStats.friend1_wins,
+                losses: this.props.friendStats.friend2_wins
+            })
+        } else {
+            this.setState({
+                wins: this.props.friendStats.friend2_wins,
+                losses: this.props.friendStats.friend1_wins
+            })
+        }
+
+        if (this.props.gameStats.host_id === this.props.user.user.user_id) {
+            this.setState({
+                myHits: this.props.gameStats.host_hits,
+                enemyHits: this.props.gameStats.guest_hits,
+                myMisses: this.props.gameStats.host_misses,
+                enemyMisses: this.props.gameStats.guest_misses,
+                myShipsSunk: this.props.gameStats.host_ships_sunk,
+                enemyShipsSunk: this.props.gameStats.guest_ships_sunk,
+                turn: this.props.gameStats.turn,
+                startingTime: this.props.gameStats.starting_time
+            })
+        } else {
+            this.setState({
+                myHits: this.props.gameStats.guest_hits,
+                enemyHits: this.props.gameStats.host_hits,
+                myMisses: this.props.gameStats.guest_hits,
+                enemyMisses: this.props.gameStats.host_misses,
+                myShipsSunk: this.props.gameStats.guest_ships_sunk,
+                enemyShipsSunk: this.props.gameStats.host_ships_sunk,
+                turn: this.props.gameStats.turn,
+                startingTime: this.props.gameStats.starting_time
+            })
+        }
     }
 
 
