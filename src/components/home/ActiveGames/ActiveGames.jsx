@@ -18,6 +18,15 @@ class ActiveGames extends Component {
             })
         })
     }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.activeGames.length !== prevState.activeGames.length) {
+            axios.get(`/api/games`).then(res => {
+                this.setState({
+                    activeGames: res.data
+                })
+            })
+        } 
+    }
     goToGame(gameroom_id) {
         axios.get(`/api/game/${gameroom_id}`).then(res => {
             // swal.fire({type: 'success' , text: 'Game On!' , showConfirmButton: false, timer: 1000})
