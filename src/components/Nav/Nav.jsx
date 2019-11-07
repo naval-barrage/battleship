@@ -17,6 +17,7 @@ class Nav extends Component {
     }
     componentDidMount() {
         axios.get('/auth/user').then(res => {
+            console.log(res.data)
             if (res.data.user) {
                 let user = {user: {user_id: res.data.user.user_id, username: res.data.user.username},
             loggedIn: res.data.loggedIn}
@@ -49,6 +50,7 @@ class Nav extends Component {
         <div className='Nav'>
             <Link to='/home'><button className='home-button'><i class="fas fa-anchor"></i>Control Room</button></Link>
             <div className='profile'>
+                {console.log(this.state.userPic)}
                     <img src={this.state.userPic} alt="A boat to show ranking"/>
                     <div className='user'>{`${this.state.username.charAt(0).toUpperCase() + this.state.username.slice(1)}`}</div>
                 <button onClick={() => this.logout()} className='logout-button'><i class="fas fa-sign-out-alt"></i>Logout</button>
