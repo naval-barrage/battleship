@@ -67,6 +67,11 @@ class Login extends Component {
     ) {
       return swal.fire({ type: "error", text: "please fill all input boxes" });
     }
+      axios.get(`/api/users?username=${username}`).then(res => {
+        // console.log(res.data[0].username)
+          if (res.data[0].username === this.state.username) {
+            return swal.fire({ type: "error", text: "Username has been taken" });
+          } else {
     if (password !== password2) {
       swal.fire({
         type: "error",
@@ -89,11 +94,12 @@ class Login extends Component {
             };
           this.props.updateUser(user);
           this.props.history.push("/home");
-          // console.log(this.props.user.user)
           }
         });
     }
   }
+})
+}
   // LOGIN
   login = async () => {
     const { username, password } = this.state;
