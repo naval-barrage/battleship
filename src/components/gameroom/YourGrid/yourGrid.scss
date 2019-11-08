@@ -24,24 +24,24 @@
   font-size: 30px;
   text-decoration-line: underline;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   padding-left: 150px;
   
 
 }
 .container {
-  height: 40vh;
+  // height: 40vh;
   // margin-left: 200px;
   
 
  
   // padding: 20px;
   // color:red
-  width: 600px;
+  // width: 600px;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(10, 60px);
-  grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
   grid-auto-flow: row;
   z-index: 10;
 }
