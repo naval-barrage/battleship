@@ -1,17 +1,17 @@
 @import '../../variables.scss';
 .wut{
-    display: flex;
-    flex-direction: center;
-    padding-left: 80px;
-    margin-left: 150px
+    // display: flex;
+    // flex-direction: center;
+    padding-left: 50px;
+    // margin-left: 150px
 }
 .grid1{
-    margin-left: 150px
+    margin-left: 40px
 }
 
 .Gameroom {
     display: flex;
-    // flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     
     // justify-content: space-around;
